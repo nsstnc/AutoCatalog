@@ -32,6 +32,7 @@ namespace AutoCatalog
             TypeOfDrive = typeOfDrive;
             Overclocking = overClocking;
             Clearance = clearance;
+            CurbWeight = curbWeight;
             FullWeight = fullWeight;
             FuelTankVolume = fuelTankVolume;
             NumberOfSeats = numberOfSeats;

@@ -16,10 +16,10 @@ namespace AutoCatalog
         public string? Country { get; }
 
 
-        public Manufacturer(string? name, int? year_of_foundation, string? country)
+        public Manufacturer(string? name, int? yearOfFoundation, string? country)
         {
             Name = name;
-            YearOfFoundation = year_of_foundation;
+            YearOfFoundation = yearOfFoundation;
             Country = country;
         }
     }

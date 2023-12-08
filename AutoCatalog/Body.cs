@@ -13,10 +13,10 @@ namespace AutoCatalog
         public int CountOfDoors { get; }
 
 
-        public Body(string name, int count_of_doors)
+        public Body(string name, int countOfDoors)
         {
             Name = name;
-            CountOfDoors = count_of_doors;
+            CountOfDoors = countOfDoors;
         }
     }
 }
