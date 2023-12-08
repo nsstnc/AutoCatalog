@@ -10,7 +10,7 @@ namespace AutoCatalog
     internal class Car
     {
         public string Name { get; }
-        public Generation Generation { get; }
+        public int Generation { get; }
         public Manufacturer Manufacturer { get;}
         public int Year { get; }
         public Configuration Configuration { get; }
@@ -18,7 +18,7 @@ namespace AutoCatalog
         public string Category { get; }
 
 
-        public Car(string name, Generation generation, Manufacturer manufacturer, int year, Configuration configuration, Body body, string category) 
+        public Car(string name, int generation, Manufacturer manufacturer, int year, Configuration configuration, Body body, string category) 
         {
             Name = name;
             Generation = generation;

@@ -7,5 +7,66 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="AutoCatalog.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Grid ShowGridLines="True" Margin="10,10,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Content="Добавить" HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" Click="addInCatalog"/>
+        <ListBox Grid.Column="1" x:Name="catalogList">
+        </ListBox>
+
+        <StackPanel x:Name="catalogAddingPanel" Grid.Column="1" Visibility="Hidden">
+
+            <TextBlock Text="Название"/>
+            <TextBox x:Name="nameTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Поколение"/>
+            <TextBox x:Name="generationTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Производитель"/>
+            <ComboBox x:Name="manufacturesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+
+
+            <TextBlock Text="Год"/>
+            <TextBox x:Name="yearTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            
+            <TextBlock Text="Комлектация"/>
+            
+            <TextBlock Text="Кузов"/>
+            
+            <TextBlock Text="Класс"/>
+            <TextBox x:Name="categoryTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name ="cancelButton" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButton_Click"/>
+                <Button x:Name ="addButton" Content="Добавить" Click="addButton_Click" />
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <StackPanel x:Name="manufacturesAddingPanel" Grid.Column="1" Visibility="Hidden">
+
+            <TextBlock Text="Название"/>
+            <TextBox x:Name="nameManufactureTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Год"/>
+            <TextBox x:Name="yearOfFoundationTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Страна"/>
+            <TextBox x:Name="countryTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+         
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name ="cancelButtonManufacture" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonManufacture_Click"/>
+                <Button x:Name ="addButton1" Content="Добавить" Click="addButtonManufacture_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
 
 </Window>

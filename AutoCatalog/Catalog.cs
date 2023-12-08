@@ -9,13 +9,21 @@ namespace AutoCatalog
 {
     // класс контейнер - каталог, содержащий в себе все автомобили
     internal class Catalog
-    {
+    {   
         private List<Car> cars { get; }
+
+        public Catalog() { cars = new List<Car>(); }
 
         // добавление автомобиля в каталог
         public bool AddCar(Car car)
         {
-            bool contain = this.cars.Contains(car);
+            bool contain = false;
+            // для каждого элемента в списке получаем свойства и сравниваем с текущим производителем, если все свойства совпадают, то такой производитель уже есть
+            foreach (Car item in cars)
+            {
+                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString() == s.GetValue(car).ToString());
+            }
+
             if (!contain) this.cars.Add(car);
             // возвращаем результат операции
             return !contain;
