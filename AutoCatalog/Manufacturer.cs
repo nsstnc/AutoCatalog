@@ -8,7 +8,6 @@ namespace AutoCatalog
 {
     // класс производителя - содержит информацию о производителе
 
-    // TODO создать класс-контейнер для производителей
 
     internal class Manufacturer
     {
