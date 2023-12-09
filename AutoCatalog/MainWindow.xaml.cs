@@ -92,8 +92,7 @@ namespace AutoCatalog
 
             // закрываем окно
             cancelButtonBody_Click(sender, e);
-            // показываем окно добавления в каталог
-            catalogAddingPanel.Visibility = Visibility.Visible;
+       
 
             // в качестве выбранного элемента задаем последний
             bodiesComboBox.SelectedIndex = bodies.GetBodies().Count;
@@ -164,8 +163,7 @@ namespace AutoCatalog
 
             // закрываем окно
             cancelButtonManufacture_Click(sender, e);
-            // показываем окно добавления в каталог
-            catalogAddingPanel.Visibility = Visibility.Visible;
+           
 
             // в качестве выбранного элемента задаем последний
             manufacturesComboBox.SelectedIndex = manufactures.GetManufacturers().Count;
@@ -196,7 +194,145 @@ namespace AutoCatalog
 
         }
 
+                                                                                         /*  ОКНО СОЗДАНИЯ КОМПЛЕКТАЦИИ   */
 
-       
+
+
+        // окно создания комплектации
+        private void createConfiguration(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно добавления автомобиля в каталог
+            catalogAddingPanel.Visibility = Visibility.Hidden;
+            // открываем окно создания комплектации
+            configurationCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // отмена создания комплектации
+        private void cancelButtonConfig_Click(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно добавления автомобиля в каталог
+            catalogAddingPanel.Visibility = Visibility.Visible;
+        }
+
+        // подтверждение создания комплектации
+        private void createButtonConfig_Click(object sender, RoutedEventArgs e)
+        {
+            // если ни одна комплектация еще не была добавлена (длина комбобокса = 1, в нем только кнопка)
+            if (configurationComboBox.Items.Count == 1)
+            {
+                // тогда меняем содержимое кнопки и добавляем в комбобокс комплектацию
+                createConfig.Content = "Изменить";
+                configurationComboBox.Items.Add("комплектация"); 
+            }
+            else 
+            {
+                // иначе изменяем последний элемент комбобокса
+                configurationComboBox.Items[configurationComboBox.Items.Count - 1] = "измененная комплектация";
+            };
+            
+            // в качестве выбранного элемента задаем последний
+            configurationComboBox.SelectedIndex = configurationComboBox.Items.Count - 1;
+            // закрываем окно
+            cancelButtonConfig_Click(sender, e);
+            
+        }
+
+
+
+                                                                                        /*  ОКНО СОЗДАНИЯ ДВИГАТЕЛЯ   */
+
+
+
+
+
+        // окно создания двигателя
+        private void createEngine(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно создания двигателя
+            engineCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // отмена создания двигателя
+        private void cancelButtonEngine_Click(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+            engineCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно добавления автомобиля в каталог
+            configurationCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // подтверждение создания двигателя
+        private void createButtonEngine_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+
+                                                                        /*  ОКНО СОЗДАНИЯ КОРОБКИ ПЕРЕДАЧ   */
+
+
+
+
+        // окно создания коробки передач
+        private void createTransmission(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+
+            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно создания трансмиссии
+            transmissionCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // отмена создания коробки передач
+        private void cancelButtonTransmission_Click(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+            transmissionCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно добавления автомобиля в каталог
+            configurationCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // подтверждение создания коробки передач
+        private void createButtonTransmission_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+                                                                                    /*  ОКНО СОЗДАНИЯ ПОДВЕСКИ И ТОРМОЗОВ   */
+
+
+
+
+        // окно создания подвески и тормозов
+        private void createSuspensionAndBrakes(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+
+            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно создания подвески и тормозов
+            suspensionAndBrakesCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // отмена создания подвески и тормозов
+        private void cancelButtonSuspensionAndBrakes_Click(object sender, RoutedEventArgs e)
+        {
+            // закрываем окно создания комплектации
+            suspensionAndBrakesCreatingPanel.Visibility = Visibility.Hidden;
+            // открываем окно добавления автомобиля в каталог
+            configurationCreatingPanel.Visibility = Visibility.Visible;
+        }
+
+        // подтверждение создания подвески и тормозов
+        private void createButtonSuspensionAndBrakes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
