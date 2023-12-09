@@ -35,6 +35,7 @@
             <TextBlock Text="Комлектация"/>
             
             <TextBlock Text="Кузов"/>
+            <ComboBox x:Name="bodiesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
             
             <TextBlock Text="Класс"/>
             <TextBox x:Name="categoryTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
@@ -63,7 +64,22 @@
          
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonManufacture" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonManufacture_Click"/>
-                <Button x:Name ="addButton1" Content="Добавить" Click="addButtonManufacture_Click" />
+                <Button x:Name ="manufactureAddButton" Content="Добавить" Click="addButtonManufacture_Click" />
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel x:Name="bodiesAddingPanel" Grid.Column="1" Visibility="Hidden">
+
+            <TextBlock Text="Название"/>
+            <TextBox x:Name="nameBodyTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Количество дверей"/>
+            <TextBox x:Name="countOfDoorsBodyTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name ="cancelButtonBody" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonBody_Click"/>
+                <Button x:Name ="addButtonBody" Content="Добавить" Click="addButtonBody_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>
