@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutoCatalog"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="AutoCatalog.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AutoCatalog" Height="450" Width="800">
     <Grid ShowGridLines="True" Margin="10,10,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>

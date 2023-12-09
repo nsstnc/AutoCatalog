@@ -22,7 +22,7 @@ namespace AutoCatalog
             // для каждого элемента в списке получаем свойства и сравниваем с текущим производителем, если все свойства совпадают, то такой производитель уже есть
             foreach (Manufacturer item in manufacturers)
             {
-                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString() == s.GetValue(manufacturer).ToString());
+                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(manufacturer).ToString().ToLower());
             }
 
             if (!contain) this.manufacturers.Add(manufacturer);

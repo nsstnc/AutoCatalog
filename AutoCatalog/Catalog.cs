@@ -18,10 +18,10 @@ namespace AutoCatalog
         public bool AddCar(Car car)
         {
             bool contain = false;
-            // для каждого элемента в списке получаем свойства и сравниваем с текущим производителем, если все свойства совпадают, то такой производитель уже есть
+            // для каждого элемента в списке получаем свойства и сравниваем с текущим автомобилем, если все свойства совпадают, то такой автомобиль уже есть
             foreach (Car item in cars)
             {
-                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString() == s.GetValue(car).ToString());
+                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(car).ToString().ToLower());
             }
 
             if (!contain) this.cars.Add(car);

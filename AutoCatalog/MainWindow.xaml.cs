@@ -63,6 +63,9 @@ namespace AutoCatalog
         // окно добавления автомобиля в каталог
         private void addInCatalog(object sender, RoutedEventArgs e)
         {
+            // очищаем форму
+            clearChildrenBoxes(catalogAddingPanel);
+            // открываем окно
             catalogAddingPanel.Visibility = Visibility.Visible;
         }
         // кнопка подтверждения добавления автомобиля в список
