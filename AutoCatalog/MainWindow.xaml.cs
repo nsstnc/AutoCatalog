@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,15 @@ namespace AutoCatalog
         Manufactures manufactures = new Manufactures();
         // инициализируем каталог
         Catalog catalog = new Catalog();
+
+        // переменная для текущей подвески
+        SuspensionAndBrakes suspensionAndBrakes;
+        // переменная для текущего производителя
+        Manufacturer manufacturer;
+        // переменная для текущей комплектации
+        Configuration configuration;
+        // переменная для текущего кузова
+        Body body;
 
         public MainWindow()
         {
@@ -186,6 +196,9 @@ namespace AutoCatalog
             clearChildrenBoxes(catalogAddingPanel);
             // открываем окно
             catalogAddingPanel.Visibility = Visibility.Visible;
+
+            // задаем переменной текущего автомобиля значение нового экземпляра
+            //current = new Car();
         }
 
         // кнопка подтверждения добавления автомобиля в список
@@ -268,7 +281,23 @@ namespace AutoCatalog
         // подтверждение создания двигателя
         private void createButtonEngine_Click(object sender, RoutedEventArgs e)
         {
+            // если ни один двигатель еще не был добавлен (длина комбобокса = 1, в нем только кнопка)
+            if (engineComboBox.Items.Count == 1)
+            {
+                // тогда меняем содержимое кнопки и добавляем в комбобокс комплектацию
+                createEngineButton.Content = "Изменить";
+                engineComboBox.Items.Add("двигатель");
+            }
+            else
+            {
+                // иначе изменяем последний элемент комбобокса
+                engineComboBox.Items[engineComboBox.Items.Count - 1] = "измененный двигатель";
+            };
 
+            // в качестве выбранного элемента задаем последний
+            engineComboBox.SelectedIndex = engineComboBox.Items.Count - 1;
+            // закрываем окно
+            cancelButtonEngine_Click(sender, e);
         }
 
 
@@ -301,12 +330,28 @@ namespace AutoCatalog
         // подтверждение создания коробки передач
         private void createButtonTransmission_Click(object sender, RoutedEventArgs e)
         {
+            // если ни одна коробка еще не был добавлена (длина комбобокса = 1, в нем только кнопка)
+            if (transmissionComboBox.Items.Count == 1)
+            {
+                // тогда меняем содержимое кнопки и добавляем в комбобокс комплектацию
+                createTransmissionButton.Content = "Изменить";
+                transmissionComboBox.Items.Add("коробка передач");
+            }
+            else
+            {
+                // иначе изменяем последний элемент комбобокса
+                transmissionComboBox.Items[transmissionComboBox.Items.Count - 1] = "измененная коробка передач";
+            };
 
+            // в качестве выбранного элемента задаем последний
+            transmissionComboBox.SelectedIndex = transmissionComboBox.Items.Count - 1;
+            // закрываем окно
+            cancelButtonTransmission_Click(sender, e);
         }
 
 
                                                                                     /*  ОКНО СОЗДАНИЯ ПОДВЕСКИ И ТОРМОЗОВ   */
-
+        
 
 
 
@@ -332,7 +377,30 @@ namespace AutoCatalog
         // подтверждение создания подвески и тормозов
         private void createButtonSuspensionAndBrakes_Click(object sender, RoutedEventArgs e)
         {
+            // создаем экземпляр класса
+            SuspensionAndBrakes SaB = new SuspensionAndBrakes(typeOfFrontSuspension: typeOfFrontSuspensionComboBox.SelectedValue.ToString(),
+                typeOfBackSuspension: typeOfBackSuspensionComboBox.SelectedValue.ToString(),
+                backBrakes: backBrakesComboBox.SelectedValue.ToString(),
+                frontBrakes: frontBrakesComboBox.SelectedValue.ToString());
 
+
+            // если ни один двигатель еще не был добавлен (длина комбобокса = 1, в нем только кнопка)
+            if (suspensionAndBrakesComboBox.Items.Count == 1)
+            {
+                // тогда меняем содержимое кнопки и добавляем в комбобокс комплектацию
+                createSuspensionAndBrakesButton.Content = "Изменить";
+                suspensionAndBrakesComboBox.Items.Add(SaB);
+            }
+            else
+            {
+                // иначе изменяем последний элемент комбобокса
+                suspensionAndBrakesComboBox.Items[suspensionAndBrakesComboBox.Items.Count - 1] = SaB;
+            };
+
+            // в качестве выбранного элемента задаем последний
+            suspensionAndBrakesComboBox.SelectedIndex = suspensionAndBrakesComboBox.Items.Count - 1;
+            // закрываем окно
+            cancelButtonSuspensionAndBrakes_Click(sender, e);
         }
     }
 }

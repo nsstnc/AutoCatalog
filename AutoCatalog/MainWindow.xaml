@@ -87,7 +87,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel x:Name="configurationCreatingPanel" Grid.Column="1" Visibility="Visible">
+        <StackPanel x:Name="configurationCreatingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Название"/>
             <TextBox x:Name="nameConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
@@ -141,6 +141,37 @@
         
         
         <StackPanel x:Name="engineCreatingPanel" Grid.Column="1" Visibility="Hidden">
+
+            <TextBlock Text="Название"/>
+            <TextBox x:Name="nameEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Тип двигателя"/>
+            <TextBox x:Name="typeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Расположение цилиндров"/>
+            <TextBox x:Name="cylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Мощность в л.с."/>
+            <TextBox x:Name="powerEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Объем двигателя в куб. см."/>
+            <TextBox x:Name="volumeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Максимальный крутящий момент"/>
+            <TextBox x:Name="torqueEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Количество цилиндров"/>
+            <TextBox x:Name="numberOfCylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Тип наддува"/>
+            <TextBox x:Name="typeOfBoostEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Марка топлива"/>
+            <TextBox x:Name="fuelGradeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Система питания двигателя"/>
+            <TextBox x:Name="enginePowerSupplySystemEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonEngine" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonEngine_Click"/>
                 <Button x:Name ="addButtonEngine" Content="Сохранить" Click="createButtonEngine_Click" />
@@ -148,6 +179,16 @@
         </StackPanel>
 
         <StackPanel x:Name="transmissionCreatingPanel" Grid.Column="1" Visibility="Hidden">
+            
+            <TextBlock Text="Название"/>
+            <TextBox x:Name="nameTransmissionTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Тип коробки передач"/>
+            <TextBox x:Name="typeTransmissionTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Количество передач"/>
+            <TextBox x:Name="numberOfGearsTransmissionTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonTransmission" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonTransmission_Click"/>
                 <Button x:Name ="addButtonTransmission" Content="Сохранить" Click="createButtonTransmission_Click" />
@@ -156,6 +197,34 @@
 
 
         <StackPanel x:Name="suspensionAndBrakesCreatingPanel" Grid.Column="1" Visibility="Hidden">
+
+            <TextBlock Text="Тип передней подвески"/>
+            <ComboBox x:Name="typeOfFrontSuspensionComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Зависимая"/>
+                <ComboBoxItem Content="Полунезависимая"/>
+                <ComboBoxItem Content="Независимая"/>
+            </ComboBox>
+            
+            <TextBlock Text="Тип задней подвески"/>
+            <ComboBox x:Name="typeOfBackSuspensionComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Зависимая"/>
+                <ComboBoxItem Content="Полунезависимая"/>
+                <ComboBoxItem Content="Независимая"/>
+            </ComboBox>
+            
+
+            <TextBlock Text="Передние тормоза"/>
+            <ComboBox x:Name="frontBrakesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Дисковые"/>
+                <ComboBoxItem Content="Барабанные"/>
+            </ComboBox>
+
+            <TextBlock Text="Задние тормоза"/>
+            <ComboBox x:Name="backBrakesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Дисковые"/>
+                <ComboBoxItem Content="Барабанные"/>
+            </ComboBox>
+
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonSuspensionAndBrakes" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonSuspensionAndBrakes_Click"/>
                 <Button x:Name ="addButtonSuspensionAndBrakes" Content="Сохранить" Click="createButtonSuspensionAndBrakes_Click" />
