@@ -22,7 +22,7 @@ namespace AutoCatalog
 
 
     // класс-контейнер для кузовов
-    internal class Bodies
+    internal class Bodies 
     {
         private List<Body> bodies { get; }
 
