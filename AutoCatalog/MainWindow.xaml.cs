@@ -48,13 +48,20 @@ namespace AutoCatalog
         public MainWindow()
         {
             InitializeComponent();
-            
+            // считываем построчно json'ы из файла и десериализируем их в объекты класса car и добавляем в каталог
+            string[] lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json");
+            foreach (string s in lines) catalog.AddCar(JsonSerializer.Deserialize<Car>(s));
+            // то же самое для производителей
+            lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
+            foreach (string s in lines) manufactures.AddManufacture(JsonSerializer.Deserialize<Manufacturer>(s));
+            // и кузовов
+            lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json");
+            foreach (string s in lines) bodies.AddBody(JsonSerializer.Deserialize<Body>(s));
+
+
+
             // задаем ресурс каталога для отображения в ListBox
             catalogList.Items.Add(catalog.GetCars());
-
-
-
-
 
             // добавляем всех производителей в Combobox
             updateManufactures();
@@ -64,7 +71,7 @@ namespace AutoCatalog
 
             // обновляем каталог
             updateCatalog();
-
+            catalogList.Items.Add(catalog.GetCars()[0].GetType().GetProperties()[0]);
         }
 
 
@@ -78,7 +85,15 @@ namespace AutoCatalog
                 // если значение свойства строка или число, добавляем его в инфо
                 if ((value is string) || (value is int)) info += value + ", ";
                 // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
-                else info += string.Join(", ", value.GetType().GetProperties().Select(s => s.GetValue(value)));
+                else
+                {
+                    foreach (var subproperty in value.GetType().GetProperties())
+                    {
+                        Trace.WriteLine(subproperty);
+                        Trace.WriteLine(subproperty.GetValue(value));
+                        info += subproperty.GetValue(value) + ", ";
+                    }
+                }
             }
 
             return info;
@@ -180,11 +195,7 @@ namespace AutoCatalog
             manufacturesAddingPanel.Visibility = Visibility.Visible;
         }
 
-        // закрытие окна добавления автомобиля в каталог
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            catalogAddingPanel.Visibility = Visibility.Hidden;
-        }
+     
 
         // закрытие окна добавления производителя
         private void cancelButtonManufacture_Click(object sender, RoutedEventArgs e)
@@ -235,8 +246,15 @@ namespace AutoCatalog
             clearChildrenBoxes(catalogAddingPanel);
             // открываем окно
             catalogAddingPanel.Visibility = Visibility.Visible;
-
         }
+
+        // закрытие окна добавления автомобиля в каталог
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            catalogAddingPanel.Visibility = Visibility.Hidden;
+            catalogList.Visibility= Visibility.Visible;
+        }
+
 
         // кнопка подтверждения добавления автомобиля в список
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -256,7 +274,8 @@ namespace AutoCatalog
 
         }
 
-        /*  ОКНО СОЗДАНИЯ КОМПЛЕКТАЦИИ   */
+       
+                                                                                    /*  ОКНО СОЗДАНИЯ КОМПЛЕКТАЦИИ   */
 
 
 
@@ -493,16 +512,29 @@ namespace AutoCatalog
         // действие при закрытии приложения
         private void Window_Close(object sender, CancelEventArgs e)
         {
-            // выполняем сериализацию компонентов каталога в формат json
-            string catalog_json = JsonSerializer.Serialize(catalog);
-            string manufactures_json = JsonSerializer.Serialize(manufactures);
-            string bodies_json = JsonSerializer.Serialize(bodies);
+            // очищаем файлы
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", string.Empty);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", string.Empty);
+
+            // используя поток записываем построчно в файл json'ы объектов контейнера с помощью сериализации
+            using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", false))
+            {
+                foreach (Car car in catalog.GetCars()) w.Write(JsonSerializer.Serialize(car));
+            }
+            // то же самое для производителей
+            using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", false))
+            {
+                foreach (Manufacturer manufacture in manufactures.GetManufacturers()) w.Write(JsonSerializer.Serialize(manufacture));
+            }
+            // то же самое для кузовов
+            using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", false))
+            {
+                foreach (Body body in bodies.GetBodies()) w.Write(JsonSerializer.Serialize(body));
+            }
+            
 
 
-            // создаем json'ы в папке проекта
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", catalog_json);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", manufactures_json);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", bodies_json);
         }
     }
 }

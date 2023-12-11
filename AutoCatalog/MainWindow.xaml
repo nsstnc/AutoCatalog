@@ -15,7 +15,7 @@
             <ColumnDefinition Width="4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0" Content="Добавить" HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" Click="addInCatalog"/>
-        <ListBox Grid.Column="1" x:Name="catalogList" Visibility="Visible" Background="LightGray">
+        <ListBox Grid.Column="1" x:Name="catalogList" Visibility="Visible" >
         </ListBox>
 
         <StackPanel x:Name="catalogAddingPanel" Grid.Column="1" Visibility="Hidden">
@@ -115,19 +115,19 @@
                 <ComboBoxItem Content="Задний"/>
             </ComboBox>
 
-            <TextBlock Text="Разгон до 100 км/ч"/>
+            <TextBlock Text="Разгон до 100 км/ч, сек."/>
             <TextBox x:Name="overclockingConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
             
-            <TextBlock Text="Дорожный просвет"/>
+            <TextBlock Text="Дорожный просвет, мм."/>
             <TextBox x:Name="clearanceConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
-            <TextBlock Text="Снаряженная масса"/>
+            <TextBlock Text="Снаряженная масса, кг."/>
             <TextBox x:Name="curbWeightConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
-            <TextBlock Text="Полная масса"/>
+            <TextBlock Text="Полная масса, кг."/>
             <TextBox x:Name="fullWeightConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
-            <TextBlock Text="Объем топливного бака"/>
+            <TextBlock Text="Объем топливного бака, л."/>
             <TextBox x:Name="fuelTankVolumeConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Количество мест"/>
@@ -147,10 +147,21 @@
             <TextBox x:Name="nameEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип двигателя"/>
-            <TextBox x:Name="typeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="typeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem>Двигатель внутреннего сгорания</ComboBoxItem>
+                <ComboBoxItem>Гибрид</ComboBoxItem>
+                <ComboBoxItem>Электродвигатель</ComboBoxItem>
+            </ComboBox>
 
             <TextBlock Text="Расположение цилиндров"/>
-            <TextBox x:Name="cylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="cylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem>Рядный</ComboBoxItem>
+                <ComboBoxItem>Оппозитный</ComboBoxItem>
+                <ComboBoxItem>V-образный</ComboBoxItem>
+                <ComboBoxItem>VR-образный</ComboBoxItem>
+                <ComboBoxItem>W-образный</ComboBoxItem>
+                <ComboBoxItem>Роторный</ComboBoxItem>
+            </ComboBox>
 
             <TextBlock Text="Мощность в л.с."/>
             <TextBox x:Name="powerEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
@@ -158,20 +169,29 @@
             <TextBlock Text="Объем двигателя в куб. см."/>
             <TextBox x:Name="volumeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
-            <TextBlock Text="Максимальный крутящий момент"/>
+            <TextBlock Text="Максимальный крутящий момент, Н*м"/>
             <TextBox x:Name="torqueEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Количество цилиндров"/>
             <TextBox x:Name="numberOfCylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип наддува"/>
-            <TextBox x:Name="typeOfBoostEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="typeOfBoostEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem>Резонансный</ComboBoxItem>
+                <ComboBoxItem>Механический</ComboBoxItem>
+                <ComboBoxItem>Газотурбинный</ComboBoxItem>
+            </ComboBox>
 
             <TextBlock Text="Марка топлива"/>
             <TextBox x:Name="fuelGradeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Система питания двигателя"/>
-            <TextBox x:Name="enginePowerSupplySystemEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="enginePowerSupplySystemEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem>Бензин</ComboBoxItem>
+                <ComboBoxItem>Дизель</ComboBoxItem>
+                <ComboBoxItem>Газ</ComboBoxItem>
+                <ComboBoxItem>Электричество</ComboBoxItem>
+            </ComboBox>
 
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonEngine" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonEngine_Click"/>
