@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,9 +15,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace AutoCatalog
 {
+
+    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -30,12 +36,10 @@ namespace AutoCatalog
 
         // переменная для текущей подвески
         SuspensionAndBrakes currentSuspensionAndBrakes;
-        // переменная для текущего производителя
-        Manufacturer currentManufacturer;
+        
         // переменная для текущей комплектации
         Configuration currentConfiguration;
-        // переменная для текущего кузова
-        Body currentBody;
+        
         // переменная для текущего двигателя
         Engine currentEngine;
         // переменная для текущей коробки передач
@@ -47,6 +51,10 @@ namespace AutoCatalog
             
             // задаем ресурс каталога для отображения в ListBox
             catalogList.Items.Add(catalog.GetCars());
+
+
+
+
 
             // добавляем всех производителей в Combobox
             updateManufactures();
@@ -474,6 +482,27 @@ namespace AutoCatalog
             suspensionAndBrakesComboBox.SelectedIndex = suspensionAndBrakesComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonSuspensionAndBrakes_Click(sender, e);
+        }
+
+
+
+
+                                                            /* ЗАКРЫТИЕ ОКНА */
+
+
+        // действие при закрытии приложения
+        private void Window_Close(object sender, CancelEventArgs e)
+        {
+            // выполняем сериализацию компонентов каталога в формат json
+            string catalog_json = JsonSerializer.Serialize(catalog);
+            string manufactures_json = JsonSerializer.Serialize(manufactures);
+            string bodies_json = JsonSerializer.Serialize(bodies);
+
+
+            // создаем json'ы в папке проекта
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", catalog_json);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", manufactures_json);
+            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", bodies_json);
         }
     }
 }
