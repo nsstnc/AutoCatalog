@@ -7,24 +7,29 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="AutoCatalog.MainWindow"
         mc:Ignorable="d"
         Closing="Window_Close"
+        MouseDown="Window_MouseDown"
         Title="AutoCatalog" Height="700" Width="800" MinWidth="800" MinHeight="700" MaxWidth="800" MaxHeight="700">
 
 
-    <Grid ShowGridLines="True" Margin="0,10,0,0">
+    <Grid  Margin="0,10,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Content="Каталог" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Click="showCatalog" Width="140"/>
-        <Button Content="Производители" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" Click="showManufactures" Width="140"/>
+        <Button Content="Каталог" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Click="showCatalog" Width="140" Height="63"/>
+        <Button Content="Производители" HorizontalAlignment="Center" Margin="0,78,0,0" VerticalAlignment="Top" Click="showManufactures" Width="140" Height="63"/>
 
-        <Button Content="Добавить" x:Name="AddButton" HorizontalAlignment="Center" Margin="0,575,0,0" VerticalAlignment="Top" Click="add_click" Width="140" Visibility="Hidden"/>
-        <Button Content="Удалить" x:Name="DeleteButton" Background="DarkRed" HorizontalAlignment="Center" Margin="0,612,0,0" VerticalAlignment="Top" Click="delete_click" Width="140" Visibility="Hidden"/>
+        <Button Content="Удалить" x:Name="DeleteButton" Background="DarkRed" HorizontalAlignment="Center" Margin="0,574,0,0" VerticalAlignment="Top" Click="delete_click" Width="140" IsEnabled="False"/>
+        <Button Content="Добавить" x:Name="AddButton" HorizontalAlignment="Center" Margin="0,611,0,0" VerticalAlignment="Top" Click="add_click" Width="140" Visibility="Visible"/>
+
         <StackPanel x:Name="background" Grid.Column="1" Visibility="Visible">
-            <Image Source="img/background.jpg" Opacity="0.7" Height="672" Width="672"/>
+            <Image Source="img/background.jpg" Opacity="0.15" Height="672" Width="672"/>
         </StackPanel>
 
+
         <ListBox VirtualizingPanel.ScrollUnit="Pixel" 
+                 SelectionChanged="manufacrures_SelectionChanged"
+                 LostFocus="manufacturesList_LostFocus"
                  Grid.Column="1" x:Name="manufactureList" Visibility="Hidden" >
 
             <ListBox.ItemContainerStyle>
@@ -43,18 +48,23 @@
 
 
         <ListBox VirtualizingPanel.ScrollUnit="Pixel"
-            Grid.Column="1" x:Name="catalogList" Visibility="Hidden" >
+            Grid.Column="1" x:Name="catalogList" Visibility="Hidden"
+                 SelectionChanged="catalog_SelectionChanged"
+                 LostFocus="catalogList_LostFocus">
             <ListBox.ItemContainerStyle>
+
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="Gainsboro"/>
                     <Setter Property="Margin" Value="5,0,5,10"/>
                     <Setter Property="Padding" Value="10"/>
                 </Style>
             </ListBox.ItemContainerStyle>
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
                 </DataTemplate>
+
             </ListBox.ItemTemplate>
         </ListBox>
 

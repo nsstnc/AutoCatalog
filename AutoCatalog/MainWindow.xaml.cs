@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace AutoCatalog
 {
@@ -79,6 +80,27 @@ namespace AutoCatalog
         }
 
 
+        // обработчик нажатия по окну приложения, мимо кнопок
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            catalogList.SelectedIndex = -1;
+            manufactureList.SelectedIndex = -1;
+        }
+
+
+        // функция для закрытия всех страниц
+        private void hideAllPages()
+        {
+            manufactureList.Visibility = Visibility.Hidden;
+            catalogList.Visibility = Visibility.Hidden;
+            catalogAddingPanel.Visibility = Visibility.Hidden;
+            bodiesAddingPanel.Visibility = Visibility.Hidden;
+            manufacturesAddingPanel.Visibility = Visibility.Hidden;
+            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            engineCreatingPanel.Visibility = Visibility.Hidden;
+            transmissionCreatingPanel.Visibility = Visibility.Hidden;
+            suspensionAndBrakesCreatingPanel.Visibility = Visibility.Hidden;
+        }
 
 
 
@@ -136,8 +158,8 @@ namespace AutoCatalog
         private void addInBodies(object sender, RoutedEventArgs e)
         {
             clearChildrenBoxes(bodiesAddingPanel);
-            // закрываем одно окно и открываем другое
-            catalogAddingPanel.Visibility = Visibility.Hidden;
+            // закрываем все окна и открываем нужное
+            hideAllPages();
             bodiesAddingPanel.Visibility = Visibility.Visible;
         }
 
@@ -161,8 +183,7 @@ namespace AutoCatalog
         // закрытие окна добавления кузова
         private void cancelButtonBody_Click(object sender, RoutedEventArgs e)
         {
-            // закрываем окно добавления кузова
-            bodiesAddingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно добавления автомобиля в каталог
             catalogAddingPanel.Visibility = Visibility.Visible;
         }
@@ -199,10 +220,8 @@ namespace AutoCatalog
         {
             clearChildrenBoxes(manufacturesAddingPanel);
             // закрываем одно окно и открываем другое
-            catalogAddingPanel.Visibility = Visibility.Hidden;
-            manufactureList.Visibility = Visibility.Hidden;
+            hideAllPages();
             manufacturesAddingPanel.Visibility = Visibility.Visible;
-            
         }
 
      
@@ -211,7 +230,7 @@ namespace AutoCatalog
         private void cancelButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
             // закрываем окно добавления производителя
-            manufacturesAddingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем необходимое окно
             if (openedCatalog) { catalogAddingPanel.Visibility = Visibility.Visible; }
             else manufactureList.Visibility = Visibility.Visible;
@@ -252,7 +271,7 @@ namespace AutoCatalog
         // окно добавления автомобиля в каталог
         private void addInCatalog(object sender, RoutedEventArgs e)
         {
-            catalogList.Visibility = Visibility.Hidden;
+            hideAllPages();
             // очищаем форму
             clearChildrenBoxes(catalogAddingPanel);
             // открываем окно
@@ -263,7 +282,7 @@ namespace AutoCatalog
         // закрытие окна добавления автомобиля в каталог
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            catalogAddingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             catalogList.Visibility= Visibility.Visible;
         }
 
@@ -281,7 +300,7 @@ namespace AutoCatalog
 
             catalog.AddCar(car);
             updateCatalog();
-            catalogAddingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             catalogList.Visibility = Visibility.Visible;
 
         }
@@ -295,7 +314,7 @@ namespace AutoCatalog
         private void createConfiguration(object sender, RoutedEventArgs e)
         {
             // закрываем окно добавления автомобиля в каталог
-            catalogAddingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно создания комплектации
             configurationCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -304,7 +323,7 @@ namespace AutoCatalog
         private void cancelButtonConfig_Click(object sender, RoutedEventArgs e)
         {
             // закрываем окно создания комплектации
-            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно добавления автомобиля в каталог
             catalogAddingPanel.Visibility = Visibility.Visible;
         }
@@ -326,18 +345,18 @@ namespace AutoCatalog
                 fuelTankVolume: int.Parse(fuelTankVolumeConfigTextBox.Text),
                 numberOfSeats: int.Parse(numberOfSeatsConfigTextBox.Text));
 
-
+            string h = createInfo(currentConfiguration).Substring(0, 40) + "...";
             // если ни одна комплектация еще не была добавлена (длина комбобокса = 1, в нем только кнопка)
             if (configurationComboBox.Items.Count == 1)
             {
                 // тогда меняем содержимое кнопки и добавляем в комбобокс комплектацию
                 createConfig.Content = "Изменить";
-                configurationComboBox.Items.Add(createInfo(currentConfiguration)); 
+                configurationComboBox.Items.Add(h);
             }
             else 
             {
                 // иначе изменяем последний элемент комбобокса
-                configurationComboBox.Items[configurationComboBox.Items.Count - 1] = createInfo(currentConfiguration);
+                configurationComboBox.Items[configurationComboBox.Items.Count - 1] = h;
             };
             
             // в качестве выбранного элемента задаем последний
@@ -359,7 +378,7 @@ namespace AutoCatalog
         private void createEngine(object sender, RoutedEventArgs e)
         {
             // закрываем окно создания комплектации
-            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно создания двигателя
             engineCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -368,7 +387,7 @@ namespace AutoCatalog
         private void cancelButtonEngine_Click(object sender, RoutedEventArgs e)
         {
             // закрываем окно создания комплектации
-            engineCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно добавления автомобиля в каталог
             configurationCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -388,17 +407,20 @@ namespace AutoCatalog
                 fuelGrade: fuelGradeEngineTextBox.Text.ToString(),
                 enginePowerSupplySystem: enginePowerSupplySystemEngineTextBox.Text.ToString());
 
+
+            string h = createInfo(currentEngine).Substring(0, 40) + "...";
+
             // если ни один двигатель еще не был добавлен (длина комбобокса = 1, в нем только кнопка)
             if (engineComboBox.Items.Count == 1)
             {
                 // тогда меняем содержимое кнопки и добавляем в комбобокс комплектацию
                 createEngineButton.Content = "Изменить";
-                engineComboBox.Items.Add(createInfo(currentEngine));
+                engineComboBox.Items.Add(h);
             }
             else
             {
                 // иначе изменяем последний элемент комбобокса
-                engineComboBox.Items[engineComboBox.Items.Count - 1] = createInfo(currentEngine);
+                engineComboBox.Items[engineComboBox.Items.Count - 1] = h;
             };
 
             // в качестве выбранного элемента задаем последний
@@ -420,7 +442,7 @@ namespace AutoCatalog
         {
             // закрываем окно создания комплектации
 
-            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно создания трансмиссии
             transmissionCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -429,7 +451,7 @@ namespace AutoCatalog
         private void cancelButtonTransmission_Click(object sender, RoutedEventArgs e)
         {
             // закрываем окно создания комплектации
-            transmissionCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно добавления автомобиля в каталог
             configurationCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -472,8 +494,7 @@ namespace AutoCatalog
         private void createSuspensionAndBrakes(object sender, RoutedEventArgs e)
         {
             // закрываем окно создания комплектации
-
-            configurationCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно создания подвески и тормозов
             suspensionAndBrakesCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -482,7 +503,7 @@ namespace AutoCatalog
         private void cancelButtonSuspensionAndBrakes_Click(object sender, RoutedEventArgs e)
         {
             // закрываем окно создания комплектации
-            suspensionAndBrakesCreatingPanel.Visibility = Visibility.Hidden;
+            hideAllPages();
             // открываем окно добавления автомобиля в каталог
             configurationCreatingPanel.Visibility = Visibility.Visible;
         }
@@ -496,18 +517,18 @@ namespace AutoCatalog
                 backBrakes: backBrakesComboBox.Text.ToString(),
                 frontBrakes: frontBrakesComboBox.Text.ToString());
 
-
+            string h = createInfo(currentSuspensionAndBrakes).Substring(0, 40) + "...";
             // если ни один двигатель еще не был добавлен (длина комбобокса = 1, в нем только кнопка)
             if (suspensionAndBrakesComboBox.Items.Count == 1)
             {
                 // тогда меняем содержимое кнопки и добавляем в комбобокс подвеску
                 createSuspensionAndBrakesButton.Content = "Изменить";
-                suspensionAndBrakesComboBox.Items.Add(createInfo(currentSuspensionAndBrakes));
+                suspensionAndBrakesComboBox.Items.Add(h);
             }
             else
             {
                 // иначе изменяем последний элемент комбобокса
-                suspensionAndBrakesComboBox.Items[suspensionAndBrakesComboBox.Items.Count - 1] = createInfo(currentSuspensionAndBrakes);
+                suspensionAndBrakesComboBox.Items[suspensionAndBrakesComboBox.Items.Count - 1] = h;
             };
 
             // в качестве выбранного элемента задаем последний
@@ -561,32 +582,37 @@ namespace AutoCatalog
         {
             if (catalogList.IsVisible)
             { 
-                catalogList.Visibility = Visibility.Hidden;
-                AddButton.Visibility = Visibility.Hidden;
-                DeleteButton.Visibility = Visibility.Hidden;
-                background.Visibility = Visibility.Visible;
+                hideAllPages();
             }
             else
             {
-                manufactureList.Visibility = Visibility.Hidden;
+                hideAllPages();
                 catalogList.Visibility = Visibility.Visible;
                 AddButton.Visibility = Visibility.Visible;
-                DeleteButton.Visibility = Visibility.Visible;
-                background.Visibility = Visibility.Hidden;
+                
             }
             
         }
-
+        // удаление из каталога
         private void deleteFromCatalog(object sender, RoutedEventArgs e)
         {
 
         }
 
+        // обработчик изменения выбранного элемента
+        private void catalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (catalogList.SelectedIndex == -1) DeleteButton.IsEnabled = false;
+            else DeleteButton.IsEnabled = true;
+        }
+        // потеря фокуса с Listbox
+        private void catalogList_LostFocus(object sender, RoutedEventArgs e)
+        {
+            DeleteButton.IsEnabled = false;
+        }
 
 
-
-
-        /* ОКНО ОТОБРАЖЕНИЯ ПРОИЗВОДИТЕЛЕЙ */
+                                        /* ОКНО ОТОБРАЖЕНИЯ ПРОИЗВОДИТЕЛЕЙ */
 
 
 
@@ -595,27 +621,34 @@ namespace AutoCatalog
         {
             if (manufactureList.IsVisible)
             {
-                manufactureList.Visibility = Visibility.Hidden;
-                AddButton.Visibility = Visibility.Hidden;
-                DeleteButton.Visibility = Visibility.Hidden;
-                background.Visibility = Visibility.Visible;
+                hideAllPages();
             }
             else
             {
-                catalogList.Visibility = Visibility.Hidden;
+                hideAllPages();
                 openedCatalog = false;
                 manufactureList.Visibility = Visibility.Visible;
                 AddButton.Visibility = Visibility.Visible;
                 DeleteButton.Visibility = Visibility.Visible;
-                background.Visibility = Visibility.Hidden;
             }
         }
-
+        // удаление из производителей
         private void deleteFromManufactures(object sender, RoutedEventArgs e)
         {
 
         }
+        // обработчик изменения выбранного элемента
+        private void manufacrures_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (manufactureList.SelectedIndex == -1) DeleteButton.IsEnabled = false;
+            else DeleteButton.IsEnabled = true;
+        }
 
+        // потеря фокуса с Listbox
+        private void manufacturesList_LostFocus(object sender, RoutedEventArgs e)
+        {
+            DeleteButton.IsEnabled = false;
+        }
 
 
 
@@ -645,5 +678,6 @@ namespace AutoCatalog
             if (manufactureList.IsVisible) addInManufacturers(sender, e);
             else addInCatalog(sender, e);
         }
+
     }
 }

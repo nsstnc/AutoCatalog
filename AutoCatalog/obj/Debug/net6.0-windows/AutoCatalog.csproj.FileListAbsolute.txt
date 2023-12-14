@@ -25,3 +25,4 @@ D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.pdb
 D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.genruntimeconfig.cache
 D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\ref\AutoCatalog.dll
 D:\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog_Content.g.cs
