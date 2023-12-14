@@ -8,13 +8,13 @@ namespace AutoCatalog
 {
     internal class Transmission
     {
-        public string classification = "Трансмиссия:\n    ";
-        public string Name { get; }
+       
         public string Type {  get; }
         public int NumberOfGears { get; }
-        public Transmission(string name, string type, int numberOfGears)
+        public Transmission(string type, int numberOfGears,
+            string classification = "Трансмиссия:\n   ")
         {
-            Name = name;
+        
             Type = type;
             NumberOfGears = numberOfGears;
         }   

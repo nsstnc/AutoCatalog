@@ -69,8 +69,6 @@ namespace AutoCatalog
             // добавляем всех производителей в Combobox
             updateManufactures();
 
-            
-
             // обновляем каталог
             updateCatalog();
         }
@@ -107,6 +105,7 @@ namespace AutoCatalog
         private string createInfo(object obj)
         {
             string info = "";
+            
             foreach (var property in obj.GetType().GetProperties())
             {
                 var value = property.GetValue(obj);
@@ -115,7 +114,6 @@ namespace AutoCatalog
                 // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
                 else
                 {
-                    info += "\n";
                     info += createInfo(value);
                 }
             }
@@ -157,7 +155,7 @@ namespace AutoCatalog
             foreach (Manufacturer manufacturer in manufactures.GetManufacturers())
             {
                 manufacturesComboBox.Items.Add(manufacturer.Name);
-                manufactureList.Items.Add(createInfo(manufacturer));
+                manufactureList.Items.Add(manufacturer);
             }
         }
 
@@ -209,7 +207,7 @@ namespace AutoCatalog
         private void updateCatalog() 
         { 
             catalogList.Items.Clear();
-            foreach (Car car in catalog.GetCars()) catalogList.Items.Add(createInfo(car));
+            foreach (Car car in catalog.GetCars()) catalogList.Items.Add(car);
         }
 
 
@@ -342,7 +340,7 @@ namespace AutoCatalog
         private void createButtonEngine_Click(object sender, RoutedEventArgs e)
         {
             // задаем новый экземпляр текущего двигателя
-            currentEngine = new Engine(name: nameEngineTextBox.Text.ToString(),
+            currentEngine = new Engine(
                 typeOfEngine: typeEngineTextBox.Text.ToString(),
                 cylinderArrangement: cylindersEngineTextBox.Text.ToString(),
                 power: int.Parse(powerEngineTextBox.Text),
@@ -406,7 +404,7 @@ namespace AutoCatalog
         private void createButtonTransmission_Click(object sender, RoutedEventArgs e)
         {
             // задаем новый экземпляр текущей коробки передач
-            currentTransmission = new Transmission(name: nameTransmissionTextBox.Text,
+            currentTransmission = new Transmission(
                 type: typeTransmissionTextBox.Text,
                 numberOfGears: int.Parse(numberOfGearsTransmissionTextBox.Text));
 

@@ -11,13 +11,12 @@ namespace AutoCatalog
 
     internal class Manufacturer
     {
-        public string classification = "Производитель:\n    ";
-        public string? Name { get; }
-        public int? YearOfFoundation { get; }
-        public string? Country { get; }
+        public string Name { get; }
+        public int YearOfFoundation { get; }
+        public string Country { get; }
 
 
-        public Manufacturer(string? name, int? yearOfFoundation, string? country)
+        public Manufacturer(string name, int yearOfFoundation, string country)
         {
             Name = name;
             YearOfFoundation = yearOfFoundation;

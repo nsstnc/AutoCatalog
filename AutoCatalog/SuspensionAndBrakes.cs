@@ -9,14 +9,13 @@ namespace AutoCatalog
     // класс описывающий подвеску и тормоза автомобиля
     internal class SuspensionAndBrakes
     {
-        public string classification = "Подвеска и тормоза:\n    ";
         public string TypeOfFrontSuspension { get; }
         public string TypeOfBackSuspension { get; }
         public string FrontBrakes { get; }
         public string BackBrakes { get; }
         public SuspensionAndBrakes(string typeOfFrontSuspension, string typeOfBackSuspension,
-            string frontBrakes, string backBrakes) 
-        { 
+            string frontBrakes, string backBrakes)
+        {
             TypeOfFrontSuspension = typeOfFrontSuspension;
             TypeOfBackSuspension = typeOfBackSuspension;
             FrontBrakes = frontBrakes;
