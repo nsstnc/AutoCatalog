@@ -32,8 +32,7 @@ namespace AutoCatalog
         // флаг открытого каталога
         bool openedCatalog = false;
 
-        // инициализируем список кузовов
-        Bodies bodies = new Bodies();
+        
         // инициализируем список производителей
         Manufactures manufactures = new Manufactures();
         // инициализируем каталог
@@ -59,9 +58,7 @@ namespace AutoCatalog
             // то же самое для производителей
             json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
             manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
-            // и кузовов
-            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json");
-            bodies = JsonConvert.DeserializeObject<Bodies>(json);
+           
 
 
 
@@ -72,8 +69,7 @@ namespace AutoCatalog
             // добавляем всех производителей в Combobox
             updateManufactures();
 
-            // добавляем все кузова в Combobox
-            updateBodies();
+            
 
             // обновляем каталог
             updateCatalog();
@@ -98,7 +94,6 @@ namespace AutoCatalog
             manufactureList.Visibility = Visibility.Hidden;
             catalogList.Visibility = Visibility.Hidden;
             catalogAddingPanel.Visibility = Visibility.Hidden;
-            bodiesAddingPanel.Visibility = Visibility.Hidden;
             manufacturesAddingPanel.Visibility = Visibility.Hidden;
             configurationCreatingPanel.Visibility = Visibility.Hidden;
             engineCreatingPanel.Visibility = Visibility.Hidden;
@@ -138,59 +133,6 @@ namespace AutoCatalog
             }
         }
 
-
-                                                                                                    /*  ОКНО ДОБАВЛЕНИЯ КУЗОВОВ   */
-
-
-
-
-        // метод обновления списка кузовов и ComboBox
-        private void updateBodies()
-        {
-            bodiesComboBox.Items.Clear();
-            // конфиг кнопки внутри ComboBox
-            Button x = new Button();
-            x.Content = "Добавить";
-            x.Click += addInBodies;
-
-            bodiesComboBox.Items.Add(x);
-            foreach (Body body in bodies.GetBodies()) bodiesComboBox.Items.Add(body.Name.ToString() + ", количество дверей: " + body.CountOfDoors.ToString());
-        }
-
-
-        // кнопка открытия окна добавления кузовов
-        private void addInBodies(object sender, RoutedEventArgs e)
-        {
-            clearChildrenBoxes(bodiesAddingPanel);
-            // закрываем все окна и открываем нужное
-            hideAllPages();
-            bodiesAddingPanel.Visibility = Visibility.Visible;
-        }
-
-        // кнопка подтверждения добавления кузова в список кузовов
-        private void addButtonBody_Click(object sender, RoutedEventArgs e)
-        {
-            // создаем экземпляр нового кузова и закрываем окно
-            Body body = new Body(name: nameBodyTextBox.Text, countOfDoors: int.Parse(countOfDoorsBodyTextBox.Text));
-            bodies.AddBody(body);
-
-            updateBodies();
-
-            // закрываем окно
-            cancelButtonBody_Click(sender, e);
-       
-
-            // в качестве выбранного элемента задаем последний
-            bodiesComboBox.SelectedIndex = bodies.GetBodies().Count;
-        }
-
-        // закрытие окна добавления кузова
-        private void cancelButtonBody_Click(object sender, RoutedEventArgs e)
-        {
-            hideAllPages();
-            // открываем окно добавления автомобиля в каталог
-            catalogAddingPanel.Visibility = Visibility.Visible;
-        }
 
 
 
@@ -299,7 +241,7 @@ namespace AutoCatalog
                 manufacturer: manufactures.GetManufacturers()[manufacturesComboBox.SelectedIndex - 1],
                 year: int.Parse(yearTextBox.Text),
                 configuration: currentConfiguration,
-                body: bodies.GetBodies()[bodiesComboBox.SelectedIndex - 1],
+                body: bodiesComboBox.Text,
                 category: categoryTextBox.Text);
 
             catalog.AddCar(car);
@@ -553,7 +495,6 @@ namespace AutoCatalog
             // очищаем файлы
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", string.Empty);
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", string.Empty);
 
            
             // используя поток записываем в json файл сериализованный объект контейнера
@@ -566,11 +507,7 @@ namespace AutoCatalog
             {
                 w.Write(JsonConvert.SerializeObject(manufactures));
             }
-            // то же самое для кузовов
-            using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", false))
-            {
-                w.Write(JsonConvert.SerializeObject(bodies));
-            }
+            
 
         }
 
@@ -606,12 +543,11 @@ namespace AutoCatalog
 
             // удаляем элемент
             catalog.RemoveCar(selected);
-            console.Text = selected.ToString();
             // обновляем список
             updateCatalog();
             // задаем новый выбранный элемент предыдущему
             catalogList.SelectedIndex = selected - 1;
-            manufactureList.Focus();
+            catalogList.Focus();
         }
 
         // обработчик изменения выбранного элемента

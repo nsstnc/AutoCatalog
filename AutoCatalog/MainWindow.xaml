@@ -30,7 +30,8 @@
         <ListBox VirtualizingPanel.ScrollUnit="Pixel" 
                  SelectionChanged="manufacrures_SelectionChanged"
                  
-                 Grid.Column="1" x:Name="manufactureList" Visibility="Hidden" >
+                 Grid.Column="1" 
+                 x:Name="manufactureList" Visibility="Hidden" >
 
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
@@ -71,29 +72,43 @@
         <StackPanel x:Name="catalogAddingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Название"/>
-            <TextBox x:Name="nameTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="nameTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Поколение"/>
-            <TextBox x:Name="generationTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="generationTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Производитель"/>
-            <ComboBox x:Name="manufacturesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="manufacturesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
 
 
             <TextBlock Text="Год"/>
-            <TextBox x:Name="yearTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="yearTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Комлектация"/>
-            <ComboBox x:Name="configurationComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="configurationComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <Button x:Name="createConfig" Content="Создать" Click="createConfiguration"></Button>
             </ComboBox>
 
             <TextBlock Text="Кузов"/>
-            <ComboBox x:Name="bodiesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="bodiesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Седан"/>
+                <ComboBoxItem Content="Хэтчбек 5 дв."/>
+                <ComboBoxItem Content="Хэтчбек 3 дв."/>
+                <ComboBoxItem Content="Лифтбек"/>
+                <ComboBoxItem Content="Внедорожник 3 дв."/>
+                <ComboBoxItem Content="Внедорожник 5 дв."/>
+                <ComboBoxItem Content="Универсал"/>
+                <ComboBoxItem Content="Купе"/>
+                <ComboBoxItem Content="Минивэн"/>
+                <ComboBoxItem Content="Пикап"/>
+                <ComboBoxItem Content="Лимузин"/>
+                <ComboBoxItem Content="Фургон"/>
+                <ComboBoxItem Content="Кабриолет"/>
+            </ComboBox>
 
             <TextBlock Text="Класс"/>
-            <TextBox x:Name="categoryTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="categoryTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
 
 
@@ -108,13 +123,13 @@
         <StackPanel x:Name="manufacturesAddingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Название"/>
-            <TextBox x:Name="nameManufactureTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="nameManufactureTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Год"/>
-            <TextBox x:Name="yearOfFoundationTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="yearOfFoundationTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Страна"/>
-            <TextBox x:Name="countryTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="countryTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
 
             <StackPanel Orientation="Horizontal">
@@ -124,64 +139,52 @@
         </StackPanel>
 
 
-        <StackPanel x:Name="bodiesAddingPanel" Grid.Column="1" Visibility="Hidden">
-
-            <TextBlock Text="Название"/>
-            <TextBox x:Name="nameBodyTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-
-            <TextBlock Text="Количество дверей"/>
-            <TextBox x:Name="countOfDoorsBodyTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
-
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name ="cancelButtonBody" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonBody_Click"/>
-                <Button x:Name ="addButtonBody" Content="Добавить" Click="addButtonBody_Click" />
-            </StackPanel>
-        </StackPanel>
+       
 
         <StackPanel x:Name="configurationCreatingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Название"/>
-            <TextBox x:Name="nameConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="nameConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Двигатель"/>
-            <ComboBox x:Name="engineComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="engineComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <Button x:Name="createEngineButton" Content="Создать" Click="createEngine"></Button>
             </ComboBox>
 
             <TextBlock Text="Коробка передач"/>
-            <ComboBox x:Name="transmissionComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="transmissionComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <Button x:Name="createTransmissionButton" Content="Создать" Click="createTransmission"></Button>
             </ComboBox>
 
             <TextBlock Text="Подвеска и тормоза"/>
-            <ComboBox x:Name="suspensionAndBrakesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="suspensionAndBrakesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <Button x:Name="createSuspensionAndBrakesButton" Content="Создать" Click="createSuspensionAndBrakes"></Button>
             </ComboBox>
 
             <TextBlock Text="Тип привода"/>
-            <ComboBox x:Name="typeOfDriveConfigComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="typeOfDriveConfigComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem Content="Полный"/>
                 <ComboBoxItem Content="Передний"/>
                 <ComboBoxItem Content="Задний"/>
             </ComboBox>
 
             <TextBlock Text="Разгон до 100 км/ч, сек."/>
-            <TextBox x:Name="overclockingConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="overclockingConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Дорожный просвет, мм."/>
-            <TextBox x:Name="clearanceConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="clearanceConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Снаряженная масса, кг."/>
-            <TextBox x:Name="curbWeightConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="curbWeightConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Полная масса, кг."/>
-            <TextBox x:Name="fullWeightConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="fullWeightConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Объем топливного бака, л."/>
-            <TextBox x:Name="fuelTankVolumeConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="fuelTankVolumeConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Количество мест"/>
-            <TextBox x:Name="numberOfSeatsConfigTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="numberOfSeatsConfigTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonConfig" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonConfig_Click"/>
@@ -194,17 +197,17 @@
         <StackPanel x:Name="engineCreatingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Название"/>
-            <TextBox x:Name="nameEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="nameEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип двигателя"/>
-            <ComboBox x:Name="typeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="typeEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem>Двигатель внутреннего сгорания</ComboBoxItem>
                 <ComboBoxItem>Гибрид</ComboBoxItem>
                 <ComboBoxItem>Электродвигатель</ComboBoxItem>
             </ComboBox>
 
             <TextBlock Text="Расположение цилиндров"/>
-            <ComboBox x:Name="cylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="cylindersEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem>Рядный</ComboBoxItem>
                 <ComboBoxItem>Оппозитный</ComboBoxItem>
                 <ComboBoxItem>V-образный</ComboBoxItem>
@@ -214,29 +217,29 @@
             </ComboBox>
 
             <TextBlock Text="Мощность в л.с."/>
-            <TextBox x:Name="powerEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="powerEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Объем двигателя в куб. см."/>
-            <TextBox x:Name="volumeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="volumeEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Максимальный крутящий момент, Н*м"/>
-            <TextBox x:Name="torqueEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="torqueEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Количество цилиндров"/>
-            <TextBox x:Name="numberOfCylindersEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="numberOfCylindersEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип наддува"/>
-            <ComboBox x:Name="typeOfBoostEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="typeOfBoostEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem>Резонансный</ComboBoxItem>
                 <ComboBoxItem>Механический</ComboBoxItem>
                 <ComboBoxItem>Газотурбинный</ComboBoxItem>
             </ComboBox>
 
             <TextBlock Text="Марка топлива"/>
-            <TextBox x:Name="fuelGradeEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="fuelGradeEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Система питания двигателя"/>
-            <ComboBox x:Name="enginePowerSupplySystemEngineTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="enginePowerSupplySystemEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem>Бензин</ComboBoxItem>
                 <ComboBoxItem>Дизель</ComboBoxItem>
                 <ComboBoxItem>Газ</ComboBoxItem>
@@ -252,10 +255,10 @@
         <StackPanel x:Name="transmissionCreatingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Название"/>
-            <TextBox x:Name="nameTransmissionTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="nameTransmissionTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип коробки передач"/>
-            <ComboBox x:Name="typeTransmissionTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="typeTransmissionTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem>Автоматическая</ComboBoxItem>
                 <ComboBoxItem>Механическая</ComboBoxItem>
                 <ComboBoxItem>Роботизированная</ComboBoxItem>
@@ -263,7 +266,7 @@
             </ComboBox>
 
             <TextBlock Text="Количество передач"/>
-            <TextBox x:Name="numberOfGearsTransmissionTextBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <TextBox x:Name="numberOfGearsTransmissionTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonTransmission" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonTransmission_Click"/>
@@ -275,14 +278,14 @@
         <StackPanel x:Name="suspensionAndBrakesCreatingPanel" Grid.Column="1" Visibility="Hidden">
 
             <TextBlock Text="Тип передней подвески"/>
-            <ComboBox x:Name="typeOfFrontSuspensionComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="typeOfFrontSuspensionComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem Content="Зависимая"/>
                 <ComboBoxItem Content="Полунезависимая"/>
                 <ComboBoxItem Content="Независимая"/>
             </ComboBox>
 
             <TextBlock Text="Тип задней подвески"/>
-            <ComboBox x:Name="typeOfBackSuspensionComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="typeOfBackSuspensionComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem Content="Зависимая"/>
                 <ComboBoxItem Content="Полунезависимая"/>
                 <ComboBoxItem Content="Независимая"/>
@@ -290,13 +293,13 @@
 
 
             <TextBlock Text="Передние тормоза"/>
-            <ComboBox x:Name="frontBrakesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="frontBrakesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem Content="Дисковые"/>
                 <ComboBoxItem Content="Барабанные"/>
             </ComboBox>
 
             <TextBlock Text="Задние тормоза"/>
-            <ComboBox x:Name="backBrakesComboBox" BorderThickness="1" Width="300" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <ComboBox x:Name="backBrakesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
                 <ComboBoxItem Content="Дисковые"/>
                 <ComboBoxItem Content="Барабанные"/>
             </ComboBox>
@@ -306,8 +309,6 @@
                 <Button x:Name ="addButtonSuspensionAndBrakes" Content="Сохранить" Click="createButtonSuspensionAndBrakes_Click" />
             </StackPanel>
         </StackPanel>
-        
-        <TextBlock x:Name="console" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="140" Width="160"/>
 
 
 
