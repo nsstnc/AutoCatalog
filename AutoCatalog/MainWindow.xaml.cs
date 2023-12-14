@@ -28,6 +28,9 @@ namespace AutoCatalog
     /// </summary>
     public partial class MainWindow : Window
     {
+        // флаг открытого каталога
+        bool openedCatalog = false;
+
         // инициализируем список кузовов
         Bodies bodies = new Bodies();
         // инициализируем список производителей
@@ -56,13 +59,14 @@ namespace AutoCatalog
             json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
             manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
             // и кузовов
-            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
+            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json");
             bodies = JsonConvert.DeserializeObject<Bodies>(json);
 
 
 
-            // задаем ресурс каталога для отображения в ListBox
+            // задаем ресурсы каталога и производителей для отображения в ListBox
             catalogList.Items.Add(catalog.GetCars());
+            manufactureList.Items.Add(manufactures.GetManufacturers());
 
             // добавляем всех производителей в Combobox
             updateManufactures();
@@ -75,21 +79,6 @@ namespace AutoCatalog
         }
 
 
-        private string getPropertyValues(object obj, string info)
-        {
-            foreach (var property in obj.GetType().GetProperties())
-            {
-                var value = property.GetValue(obj);
-                // если значение свойства строка или число, добавляем его в инфо
-                if ((value is string) || (value is int)) info += value + ", ";
-                // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
-                else
-                {
-                   return getPropertyValues(value, info);
-                }
-            }
-            return info;
-        }
 
 
 
@@ -97,9 +86,18 @@ namespace AutoCatalog
         private string createInfo(object obj)
         {
             string info = "";
-
-            info += getPropertyValues(obj, info);
-
+            foreach (var property in obj.GetType().GetProperties())
+            {
+                var value = property.GetValue(obj);
+                // если значение свойства строка или число, добавляем его в инфо
+                if ((value is string) || (value is int) || (value is double)) info += value + ", ";
+                // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
+                else
+                {
+                    info += "\n";
+                    info += createInfo(value);
+                }
+            }
             return info;
         }
 
@@ -174,20 +172,26 @@ namespace AutoCatalog
 
 
 
-                                                                                                    /*  ОКНО ДОБАВЛЕНИЯ ПРОИЗВОДИТЕЛЕЙ   */
+                                                    /*  ОКНО ДОБАВЛЕНИЯ ПРОИЗВОДИТЕЛЕЙ   */
+
 
 
         // метод обновления списка производителей
         private void updateManufactures()
         {
             manufacturesComboBox.Items.Clear();
+            manufactureList.Items.Clear();
             // конфиг кнопки внутри ComboBox
             Button x = new Button();
             x.Content = "Добавить";
             x.Click += addInManufacturers;
 
             manufacturesComboBox.Items.Add(x);
-            foreach (Manufacturer manufacturer in manufactures.GetManufacturers()) manufacturesComboBox.Items.Add(manufacturer.Name);
+            foreach (Manufacturer manufacturer in manufactures.GetManufacturers())
+            {
+                manufacturesComboBox.Items.Add(manufacturer.Name);
+                manufactureList.Items.Add(createInfo(manufacturer));
+            }
         }
 
         // кнопка открытия окна добавления производителя в список
@@ -196,7 +200,9 @@ namespace AutoCatalog
             clearChildrenBoxes(manufacturesAddingPanel);
             // закрываем одно окно и открываем другое
             catalogAddingPanel.Visibility = Visibility.Hidden;
+            manufactureList.Visibility = Visibility.Hidden;
             manufacturesAddingPanel.Visibility = Visibility.Visible;
+            
         }
 
      
@@ -206,8 +212,9 @@ namespace AutoCatalog
         {
             // закрываем окно добавления производителя
             manufacturesAddingPanel.Visibility = Visibility.Hidden;
-            // открываем окно добавления автомобиля в каталог
-            catalogAddingPanel.Visibility = Visibility.Visible;
+            // открываем необходимое окно
+            if (openedCatalog) { catalogAddingPanel.Visibility = Visibility.Visible; }
+            else manufactureList.Visibility = Visibility.Visible;
         }
 
         // кнопка подтверждения добавления производителя в список производителей
@@ -250,6 +257,7 @@ namespace AutoCatalog
             clearChildrenBoxes(catalogAddingPanel);
             // открываем окно
             catalogAddingPanel.Visibility = Visibility.Visible;
+            openedCatalog = true;
         }
 
         // закрытие окна добавления автомобиля в каталог
@@ -264,7 +272,7 @@ namespace AutoCatalog
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             Car car = new Car(name: nameTextBox.Text, 
-                generation: int.Parse(generationTextBox.Text), 
+                generation: generationTextBox.Text, 
                 manufacturer: manufactures.GetManufacturers()[manufacturesComboBox.SelectedIndex - 1],
                 year: int.Parse(yearTextBox.Text),
                 configuration: currentConfiguration,
@@ -305,12 +313,13 @@ namespace AutoCatalog
         private void createButtonConfig_Click(object sender, RoutedEventArgs e)
         {
 
+
             currentConfiguration = new Configuration(name: nameConfigTextBox.Text,
                 engine: currentEngine,
                 transmission: currentTransmission,
                 suspensionAndBrakes: currentSuspensionAndBrakes,
                 typeOfDrive: typeOfDriveConfigComboBox.Text,
-                overClocking: int.Parse(overclockingConfigTextBox.Text),
+                overClocking: decimal.Parse(overclockingConfigTextBox.Text),
                 clearance: int.Parse(clearanceConfigTextBox.Text),
                 curbWeight: int.Parse(curbWeightConfigTextBox.Text),
                 fullWeight: int.Parse(fullWeightConfigTextBox.Text),
@@ -538,6 +547,103 @@ namespace AutoCatalog
                 w.Write(JsonConvert.SerializeObject(bodies));
             }
 
+        }
+
+
+
+                                                             /* ОКНО ОТОБРАЖЕНИЯ КАТАЛОГА*/
+
+
+
+
+
+        private void showCatalog(object sender, RoutedEventArgs e)
+        {
+            if (catalogList.IsVisible)
+            { 
+                catalogList.Visibility = Visibility.Hidden;
+                AddButton.Visibility = Visibility.Hidden;
+                DeleteButton.Visibility = Visibility.Hidden;
+                background.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                manufactureList.Visibility = Visibility.Hidden;
+                catalogList.Visibility = Visibility.Visible;
+                AddButton.Visibility = Visibility.Visible;
+                DeleteButton.Visibility = Visibility.Visible;
+                background.Visibility = Visibility.Hidden;
+            }
+            
+        }
+
+        private void deleteFromCatalog(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+
+
+        /* ОКНО ОТОБРАЖЕНИЯ ПРОИЗВОДИТЕЛЕЙ */
+
+
+
+
+        private void showManufactures(object sender, RoutedEventArgs e)
+        {
+            if (manufactureList.IsVisible)
+            {
+                manufactureList.Visibility = Visibility.Hidden;
+                AddButton.Visibility = Visibility.Hidden;
+                DeleteButton.Visibility = Visibility.Hidden;
+                background.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                catalogList.Visibility = Visibility.Hidden;
+                openedCatalog = false;
+                manufactureList.Visibility = Visibility.Visible;
+                AddButton.Visibility = Visibility.Visible;
+                DeleteButton.Visibility = Visibility.Visible;
+                background.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void deleteFromManufactures(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // кнопка удалить
+        private void delete_click(object sender, RoutedEventArgs e)
+        {
+            if (manufactureList.IsVisible) deleteFromManufactures(sender, e);
+            else deleteFromCatalog(sender, e);  
+        }
+
+        // кнопка добавить
+        private void add_click(object sender, RoutedEventArgs e)
+        {
+            if (manufactureList.IsVisible) addInManufacturers(sender, e);
+            else addInCatalog(sender, e);
         }
     }
 }

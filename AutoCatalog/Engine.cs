@@ -9,6 +9,7 @@ namespace AutoCatalog
     // класс описывающий двигатель
     internal class Engine
     {
+        public static string classification = "Двигатель:\n    ";
         public string Name { get; }
         public string TypeOfEngine { get; }
         public string CylinderArrangement { get; }

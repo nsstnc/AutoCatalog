@@ -9,6 +9,7 @@ namespace AutoCatalog
     // класс описываюший кузов
     internal class Body
     {
+        public string classification = "Кузов:\n    ";
         public string Name { get; }
         public int CountOfDoors { get; }
 

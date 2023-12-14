@@ -9,6 +9,7 @@ namespace AutoCatalog
     // класс описывающий комплектацию
     internal class Configuration
     {
+        public string classification = "Комплектация:\n    ";
         public string Name { get; }
         public Engine Engine { get; }
         public Transmission Transmission { get; }

@@ -11,6 +11,7 @@ namespace AutoCatalog
 
     internal class Manufacturer
     {
+        public string classification = "Производитель:\n    ";
         public string? Name { get; }
         public int? YearOfFoundation { get; }
         public string? Country { get; }
