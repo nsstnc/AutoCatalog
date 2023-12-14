@@ -127,7 +127,7 @@ namespace AutoCatalog
             foreach(var child in panel.Children) 
             {
                 if (child is TextBox) ((TextBox)child).Clear();
-                if (child is ComboBox) ((ComboBox)child).SelectedValue = "Не выбрано";
+                if (child is ComboBox) ((ComboBox)child).SelectedValue = "";
             }
         }
 
@@ -247,6 +247,16 @@ namespace AutoCatalog
             hideAllPages();
             catalogList.Visibility = Visibility.Visible;
 
+            clearChildrenBoxes(catalogAddingPanel);
+            // сбрасываем комбобоксы и кнопки в них
+            configurationComboBox.Items.RemoveAt(1);
+            engineComboBox.Items.RemoveAt(1);
+            transmissionComboBox.Items.RemoveAt(1);
+            suspensionAndBrakesComboBox.Items.RemoveAt(1);
+            createConfig.Content = "Создать";
+            createEngineButton.Content = "Создать";
+            createTransmissionButton.Content = "Создать";
+            createSuspensionAndBrakesButton.Content = "Создать";
         }
 
        
