@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace AutoCatalog
 {
@@ -48,15 +49,15 @@ namespace AutoCatalog
         public MainWindow()
         {
             InitializeComponent();
-            // считываем построчно json'ы из файла и десериализируем их в объекты класса car и добавляем в каталог
-            string[] lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json");
-            foreach (string s in lines) catalog.AddCar(JsonSerializer.Deserialize<Car>(s));
+            // считываем  json строку из файла и десериализируем ее в контейнер
+            string json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json");
+            catalog = JsonConvert.DeserializeObject<Catalog>(json);
             // то же самое для производителей
-            lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
-            foreach (string s in lines) manufactures.AddManufacture(JsonSerializer.Deserialize<Manufacturer>(s));
+            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
+            manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
             // и кузовов
-            lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json");
-            foreach (string s in lines) bodies.AddBody(JsonSerializer.Deserialize<Body>(s));
+            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
+            bodies = JsonConvert.DeserializeObject<Bodies>(json);
 
 
 
@@ -71,30 +72,33 @@ namespace AutoCatalog
 
             // обновляем каталог
             updateCatalog();
-            catalogList.Items.Add(catalog.GetCars()[0].GetType().GetProperties()[0]);
         }
 
 
-        // метод создания краткой информации из свойств объекта
-        private string createInfo(object example)
+        private string getPropertyValues(object obj, string info)
         {
-            string info = "";
-            foreach (var property in example.GetType().GetProperties())
+            foreach (var property in obj.GetType().GetProperties())
             {
-                var value = property.GetValue(example);
+                var value = property.GetValue(obj);
                 // если значение свойства строка или число, добавляем его в инфо
                 if ((value is string) || (value is int)) info += value + ", ";
                 // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
                 else
                 {
-                    foreach (var subproperty in value.GetType().GetProperties())
-                    {
-                        Trace.WriteLine(subproperty);
-                        Trace.WriteLine(subproperty.GetValue(value));
-                        info += subproperty.GetValue(value) + ", ";
-                    }
+                   return getPropertyValues(value, info);
                 }
             }
+            return info;
+        }
+
+
+
+        // метод создания краткой информации из свойств объекта
+        private string createInfo(object obj)
+        {
+            string info = "";
+
+            info += getPropertyValues(obj, info);
 
             return info;
         }
@@ -517,23 +521,22 @@ namespace AutoCatalog
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", string.Empty);
 
-            // используя поток записываем построчно в файл json'ы объектов контейнера с помощью сериализации
+           
+            // используя поток записываем в json файл сериализованный объект контейнера
             using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", false))
             {
-                foreach (Car car in catalog.GetCars()) w.Write(JsonSerializer.Serialize(car));
+                w.Write(JsonConvert.SerializeObject(catalog));
             }
             // то же самое для производителей
             using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", false))
             {
-                foreach (Manufacturer manufacture in manufactures.GetManufacturers()) w.Write(JsonSerializer.Serialize(manufacture));
+                w.Write(JsonConvert.SerializeObject(manufactures));
             }
             // то же самое для кузовов
             using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\bodies.json", false))
             {
-                foreach (Body body in bodies.GetBodies()) w.Write(JsonSerializer.Serialize(body));
+                w.Write(JsonConvert.SerializeObject(bodies));
             }
-            
-
 
         }
     }

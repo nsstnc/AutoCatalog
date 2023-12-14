@@ -28,7 +28,7 @@ namespace AutoCatalog
     // класс-контейнер для производителей
     internal class Manufactures
     {
-        private List<Manufacturer> manufacturers { get; }
+        public List<Manufacturer> manufacturers { get; set; }
 
         public Manufactures() { manufacturers = new List<Manufacturer>(); }
         // добавление производителя в список производителей

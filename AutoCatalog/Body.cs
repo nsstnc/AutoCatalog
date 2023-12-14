@@ -24,7 +24,7 @@ namespace AutoCatalog
     // класс-контейнер для кузовов
     internal class Bodies 
     {
-        private List<Body> bodies { get; }
+        public List<Body> bodies { get; set; }
 
         public Bodies() { bodies = new List<Body>(); }
         // добавление производителя в список производителей

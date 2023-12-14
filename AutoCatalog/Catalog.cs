@@ -10,7 +10,7 @@ namespace AutoCatalog
     // класс контейнер - каталог, содержащий в себе все автомобили
     internal class Catalog
     {   
-        private List<Car> cars { get; }
+        public List<Car> cars { get; set; }
 
         public Catalog() { cars = new List<Car>(); }
 

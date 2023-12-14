@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ieHFQHYD9dcAmG3L03CttzQLEg/wjiSmMKj1Fm8Gh3RR4H73ADFkEefsFif6sHDap6Se5L7PndFh+h/e5u7UMg==",
+  "dgSpecHash": "DDUNHyN/3Ae2fNVYpeYAYJDWEr3uEq8X+UzK3REb9fMi0Z1qRUUk6Im2Q7C0SkT+ot746mMna2VvhxU3qLYC5A==",
   "success": true,
   "projectFilePath": "D:\\AutoCatalog\\AutoCatalog\\AutoCatalog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Егор\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
     "C:\\Users\\Егор\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
-    "C:\\Users\\Егор\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+    "C:\\Users\\Егор\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+    "C:\\Users\\Егор\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }
