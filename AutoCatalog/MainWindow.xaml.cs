@@ -79,12 +79,16 @@ namespace AutoCatalog
             updateCatalog();
         }
 
+        private void dropSelector()
+        {
+            catalogList.SelectedIndex = -1;
+            manufactureList.SelectedIndex = -1;
+        }
 
         // обработчик нажатия по окну приложения, мимо кнопок
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            catalogList.SelectedIndex = -1;
-            manufactureList.SelectedIndex = -1;
+            dropSelector();
         }
 
 
@@ -580,6 +584,7 @@ namespace AutoCatalog
 
         private void showCatalog(object sender, RoutedEventArgs e)
         {
+            dropSelector();
             if (catalogList.IsVisible)
             { 
                 hideAllPages();
@@ -594,9 +599,19 @@ namespace AutoCatalog
             
         }
         // удаление из каталога
-        private void deleteFromCatalog(object sender, RoutedEventArgs e)
+        private void deleteFromCatalog()
         {
+            // сохраняем индекс текущего выбранного элемента
+            int selected = catalogList.SelectedIndex;
 
+            // удаляем элемент
+            catalog.RemoveCar(selected);
+            console.Text = selected.ToString();
+            // обновляем список
+            updateCatalog();
+            // задаем новый выбранный элемент предыдущему
+            catalogList.SelectedIndex = selected - 1;
+            manufactureList.Focus();
         }
 
         // обработчик изменения выбранного элемента
@@ -605,12 +620,7 @@ namespace AutoCatalog
             if (catalogList.SelectedIndex == -1) DeleteButton.IsEnabled = false;
             else DeleteButton.IsEnabled = true;
         }
-        // потеря фокуса с Listbox
-        private void catalogList_LostFocus(object sender, RoutedEventArgs e)
-        {
-            DeleteButton.IsEnabled = false;
-        }
-
+  
 
                                         /* ОКНО ОТОБРАЖЕНИЯ ПРОИЗВОДИТЕЛЕЙ */
 
@@ -619,6 +629,7 @@ namespace AutoCatalog
 
         private void showManufactures(object sender, RoutedEventArgs e)
         {
+            dropSelector();
             if (manufactureList.IsVisible)
             {
                 hideAllPages();
@@ -633,8 +644,18 @@ namespace AutoCatalog
             }
         }
         // удаление из производителей
-        private void deleteFromManufactures(object sender, RoutedEventArgs e)
+        private void deleteFromManufactures()
         {
+            // сохраняем индекс текущего выбранного элемента
+            int selected = manufactureList.SelectedIndex;
+
+            // удаляем элемент
+            manufactures.RemoveManufacture(selected);
+            // обновляем список
+            updateManufactures();
+            // задаем новый выбранный элемент предыдущему
+            manufactureList.SelectedIndex = selected - 1;
+            manufactureList.Focus();
 
         }
         // обработчик изменения выбранного элемента
@@ -644,11 +665,7 @@ namespace AutoCatalog
             else DeleteButton.IsEnabled = true;
         }
 
-        // потеря фокуса с Listbox
-        private void manufacturesList_LostFocus(object sender, RoutedEventArgs e)
-        {
-            DeleteButton.IsEnabled = false;
-        }
+    
 
 
 
@@ -668,13 +685,14 @@ namespace AutoCatalog
         // кнопка удалить
         private void delete_click(object sender, RoutedEventArgs e)
         {
-            if (manufactureList.IsVisible) deleteFromManufactures(sender, e);
-            else deleteFromCatalog(sender, e);  
+            if (manufactureList.IsVisible) deleteFromManufactures();
+            else deleteFromCatalog();  
         }
 
         // кнопка добавить
         private void add_click(object sender, RoutedEventArgs e)
         {
+            dropSelector();
             if (manufactureList.IsVisible) addInManufacturers(sender, e);
             else addInCatalog(sender, e);
         }

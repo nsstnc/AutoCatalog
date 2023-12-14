@@ -20,7 +20,7 @@
         <Button Content="Производители" HorizontalAlignment="Center" Margin="0,78,0,0" VerticalAlignment="Top" Click="showManufactures" Width="140" Height="63"/>
 
         <Button Content="Удалить" x:Name="DeleteButton" Background="DarkRed" HorizontalAlignment="Center" Margin="0,574,0,0" VerticalAlignment="Top" Click="delete_click" Width="140" IsEnabled="False"/>
-        <Button Content="Добавить" x:Name="AddButton" HorizontalAlignment="Center" Margin="0,611,0,0" VerticalAlignment="Top" Click="add_click" Width="140" Visibility="Visible"/>
+        <Button Focusable="False" Content="Добавить" x:Name="AddButton" HorizontalAlignment="Center" Margin="0,611,0,0" VerticalAlignment="Top" Click="add_click" Width="140" Visibility="Visible"/>
 
         <StackPanel x:Name="background" Grid.Column="1" Visibility="Visible">
             <Image Source="img/background.jpg" Opacity="0.15" Height="672" Width="672"/>
@@ -29,7 +29,7 @@
 
         <ListBox VirtualizingPanel.ScrollUnit="Pixel" 
                  SelectionChanged="manufacrures_SelectionChanged"
-                 LostFocus="manufacturesList_LostFocus"
+                 
                  Grid.Column="1" x:Name="manufactureList" Visibility="Hidden" >
 
             <ListBox.ItemContainerStyle>
@@ -50,7 +50,7 @@
         <ListBox VirtualizingPanel.ScrollUnit="Pixel"
             Grid.Column="1" x:Name="catalogList" Visibility="Hidden"
                  SelectionChanged="catalog_SelectionChanged"
-                 LostFocus="catalogList_LostFocus">
+                 >
             <ListBox.ItemContainerStyle>
 
                 <Style TargetType="ListBoxItem">
@@ -306,6 +306,8 @@
                 <Button x:Name ="addButtonSuspensionAndBrakes" Content="Сохранить" Click="createButtonSuspensionAndBrakes_Click" />
             </StackPanel>
         </StackPanel>
+        
+        <TextBlock x:Name="console" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="140" Width="160"/>
 
 
 

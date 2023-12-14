@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,11 +44,9 @@ namespace AutoCatalog
             return !contain;
         }
         // удаление производителя из списка производителей
-        public bool RemoveBody(Body body)
+        public void RemoveBody(int index)
         {
-            bool contain = this.bodies.Contains(body);
-            if (contain) this.bodies.Remove(body);
-            return contain;
+            this.bodies.RemoveAt(index);
         }
 
         public List<Body> GetBodies()

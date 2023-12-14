@@ -29,11 +29,9 @@ namespace AutoCatalog
             return !contain;
         }
         // удаление автомобиля из каталога
-        public bool RemoveCar(Car car) 
+        public void RemoveCar(int index) 
         {
-            bool contain = this.cars.Contains(car);
-            if (contain) this.cars.Remove(car);
-            return contain;
+            this.cars.RemoveAt(index);
         }
 
         public List<Car> GetCars()

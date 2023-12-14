@@ -47,11 +47,9 @@ namespace AutoCatalog
             return !contain;
         }
         // удаление производителя из списка производителей
-        public bool RemoveManufacture(Manufacturer manufacturer)
+        public void RemoveManufacture(int index)
         {
-            bool contain = this.manufacturers.Contains(manufacturer);
-            if (contain) this.manufacturers.Remove(manufacturer);
-            return contain;
+            manufacturers.RemoveAt(index);
         }
 
         public List<Manufacturer> GetManufacturers()
