@@ -66,7 +66,7 @@ namespace AutoCatalog
             catalogList.Items.Add(catalog.GetCars());
             manufactureList.Items.Add(manufactures.GetManufacturers());
 
-            // добавляем всех производителей в Combobox
+            // обновляем производителей
             updateManufactures();
 
             // обновляем каталог
@@ -609,16 +609,7 @@ namespace AutoCatalog
             else DeleteButton.IsEnabled = true;
         }
 
-    
-
-
-
-
-
-
-
-
-
+  
 
 
 

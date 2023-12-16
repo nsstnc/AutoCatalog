@@ -15,7 +15,6 @@ namespace AutoCatalog
         public int YearOfFoundation { get; }
         public string Country { get; }
 
-
         public Manufacturer(string name, int yearOfFoundation, string country)
         {
             Name = name;
