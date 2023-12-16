@@ -63,8 +63,8 @@ namespace AutoCatalog
 
 
             // задаем ресурсы каталога и производителей для отображения в ListBox
-            catalogList.Items.Add(catalog.GetCars());
-            manufactureList.Items.Add(manufactures.GetManufacturers());
+            catalogList.Items.Add(catalog.Get());
+            manufactureList.Items.Add(manufactures.Get());
 
             // обновляем производителей
             updateManufactures();
@@ -152,7 +152,7 @@ namespace AutoCatalog
             x.Click += addInManufacturers;
 
             manufacturesComboBox.Items.Add(x);
-            foreach (Manufacturer manufacturer in manufactures.GetManufacturers())
+            foreach (Manufacturer manufacturer in manufactures.Get())
             {
                 manufacturesComboBox.Items.Add(manufacturer.Name);
                 manufactureList.Items.Add(manufacturer);
@@ -185,7 +185,7 @@ namespace AutoCatalog
         {
             // создаем экземпляр нового производителя и закрываем окно
             Manufacturer manufacturer = new Manufacturer(name: nameManufactureTextBox.Text, yearOfFoundation: int.Parse(yearOfFoundationTextBox.Text), country: countryTextBox.Text);
-            manufactures.AddManufacture(manufacturer);
+            manufactures.AddItem(manufacturer);
 
             updateManufactures();
 
@@ -194,7 +194,7 @@ namespace AutoCatalog
            
 
             // в качестве выбранного элемента задаем последний
-            manufacturesComboBox.SelectedIndex = manufactures.GetManufacturers().Count;
+            manufacturesComboBox.SelectedIndex = manufactures.Get().Count;
         }
 
 
@@ -207,7 +207,7 @@ namespace AutoCatalog
         private void updateCatalog() 
         { 
             catalogList.Items.Clear();
-            foreach (Car car in catalog.GetCars()) catalogList.Items.Add(car);
+            foreach (Car car in catalog.Get()) catalogList.Items.Add(car);
         }
 
 
@@ -236,13 +236,13 @@ namespace AutoCatalog
         {
             Car car = new Car(name: nameTextBox.Text, 
                 generation: generationTextBox.Text, 
-                manufacturer: manufactures.GetManufacturers()[manufacturesComboBox.SelectedIndex - 1],
+                manufacturer: (Manufacturer)manufactures.Get()[manufacturesComboBox.SelectedIndex - 1],
                 year: int.Parse(yearTextBox.Text),
                 configuration: currentConfiguration,
                 body: bodiesComboBox.Text,
                 category: categoryTextBox.Text);
 
-            catalog.AddCar(car);
+            catalog.AddItem(car);
             updateCatalog();
             hideAllPages();
             catalogList.Visibility = Visibility.Visible;
@@ -550,7 +550,7 @@ namespace AutoCatalog
             int selected = catalogList.SelectedIndex;
 
             // удаляем элемент
-            catalog.RemoveCar(selected);
+            catalog.RemoveItem(selected);
             // обновляем список
             updateCatalog();
             // задаем новый выбранный элемент предыдущему
@@ -594,7 +594,7 @@ namespace AutoCatalog
             int selected = manufactureList.SelectedIndex;
 
             // удаляем элемент
-            manufactures.RemoveManufacture(selected);
+            manufactures.RemoveItem(selected);
             // обновляем список
             updateManufactures();
             // задаем новый выбранный элемент предыдущему
