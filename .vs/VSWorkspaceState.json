@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AutoCatalog"
   ],
-  "SelectedNode": "\\AutoCatalog.sln",
+  "SelectedNode": "\\AutoCatalog\\Catalog.cs",
   "PreviewInSolutionExplorer": false
 }

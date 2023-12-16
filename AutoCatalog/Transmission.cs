@@ -11,8 +11,7 @@ namespace AutoCatalog
        
         public string Type {  get; }
         public int NumberOfGears { get; }
-        public Transmission(string type, int numberOfGears,
-            string classification = "Трансмиссия:\n   ")
+        public Transmission(string type, int numberOfGears)
         {
         
             Type = type;

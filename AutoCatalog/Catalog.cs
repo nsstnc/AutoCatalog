@@ -8,35 +8,28 @@ using System.Threading.Tasks;
 namespace AutoCatalog
 {
     // класс контейнер - каталог, содержащий в себе все автомобили
-    internal class Catalog
-    {   
-        public List<Car> cars { get; set; }
+    internal class Catalog : Container<Car>
+    {
+        // конструктор класса
+        public Catalog() { items = new List<Car>(); }
 
-        public Catalog() { cars = new List<Car>(); }
-
-        // добавление автомобиля в каталог
-        public bool AddCar(Car car)
+        public override List<Car> items { get; set; }
+        // добавление элемента в контейнер
+        public override void AddItem(Car item)
         {
             bool contain = false;
-            // для каждого элемента в списке получаем свойства и сравниваем с текущим автомобилем, если все свойства совпадают, то такой автомобиль уже есть
-            foreach (Car item in cars)
+            // для каждого элемента в списке получаем свойства и сравниваем с текущим элементов, если все свойства совпадают, то такой объект уже есть
+            foreach (Car included_item in items)
             {
-                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(car).ToString().ToLower());
+                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(included_item).ToString().ToLower());
             }
 
-            if (!contain) this.cars.Add(car);
-            // возвращаем результат операции
-            return !contain;
-        }
-        // удаление автомобиля из каталога
-        public void RemoveCar(int index) 
-        {
-            this.cars.RemoveAt(index);
-        }
+            if (!contain) this.items.Add(item);
 
-        public List<Car> GetCars()
-        {
-            return this.cars;
         }
+        // удаление элемента из контейнера по индексу
+        public override void RemoveItem(int index) { items.RemoveAt(index); }
+        public override List<Car> Get(){ return items; }
+
     }
 }

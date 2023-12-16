@@ -15,7 +15,6 @@ namespace AutoCatalog
         public int YearOfFoundation { get; }
         public string Country { get; }
 
-
         public Manufacturer(string name, int yearOfFoundation, string country)
         {
             Name = name;
@@ -26,36 +25,31 @@ namespace AutoCatalog
 
 
     // класс-контейнер для производителей
-    internal class Manufactures
+    internal class Manufactures : Container<Manufacturer>
     {
-        public List<Manufacturer> manufacturers { get; set; }
+        // конструктор класса
+        public Manufactures() { items = new List<Manufacturer>(); }
 
-        public Manufactures() { manufacturers = new List<Manufacturer>(); }
-        // добавление производителя в список производителей
-        public bool AddManufacture(Manufacturer manufacturer)
+        public override List<Manufacturer> items { get; set; }
+        // добавление элемента в контейнер
+        public override void AddItem(Manufacturer item)
         {
             bool contain = false;
-            // для каждого элемента в списке получаем свойства и сравниваем с текущим производителем, если все свойства совпадают, то такой производитель уже есть
-            foreach (Manufacturer item in manufacturers)
+            // для каждого элемента в списке получаем свойства и сравниваем с текущим элементов, если все свойства совпадают, то такой объект уже есть
+            foreach (Manufacturer included_item in items)
             {
-                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(manufacturer).ToString().ToLower());
+                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(included_item).ToString().ToLower());
             }
 
-            if (!contain) this.manufacturers.Add(manufacturer);
-            // возвращаем результат операции
-            return !contain;
-        }
-        // удаление производителя из списка производителей
-        public void RemoveManufacture(int index)
-        {
-            manufacturers.RemoveAt(index);
-        }
+            if (!contain) this.items.Add(item);
 
-        public List<Manufacturer> GetManufacturers()
-        {
-            return this.manufacturers;
         }
+        // удаление элемента из контейнера по индексу
+        public override void RemoveItem(int index) { items.RemoveAt(index); }
+        public override List<Manufacturer> Get() { return items; }
+
     }
+
 
 
 }
