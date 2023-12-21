@@ -8,12 +8,10 @@ namespace AutoCatalog
 {
     internal class Transmission
     {
-       
         public string Type {  get; }
         public int NumberOfGears { get; }
         public Transmission(string type, int numberOfGears)
-        {
-        
+        {   
             Type = type;
             NumberOfGears = numberOfGears;
         }   

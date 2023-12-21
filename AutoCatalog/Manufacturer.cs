@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 namespace AutoCatalog
 {
     // класс производителя - содержит информацию о производителе
-
-
     internal class Manufacturer
     {
         public string Name { get; }

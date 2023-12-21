@@ -23,10 +23,6 @@ namespace AutoCatalog
 {
 
     
-
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         // флаг открытого каталога
@@ -48,6 +44,10 @@ namespace AutoCatalog
         Engine currentEngine;
         // переменная для текущей коробки передач
         Transmission currentTransmission;
+
+        // объявляем делегат удаления
+        delegate void deleteFrom();
+        deleteFrom deleteFunction;
 
         public MainWindow()
         {
@@ -504,7 +504,6 @@ namespace AutoCatalog
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", string.Empty);
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
 
-           
             // используя поток записываем в json файл сериализованный объект контейнера
             using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", false))
             {
@@ -515,8 +514,6 @@ namespace AutoCatalog
             {
                 w.Write(JsonConvert.SerializeObject(manufactures));
             }
-            
-
         }
 
 
@@ -620,8 +617,12 @@ namespace AutoCatalog
         // кнопка удалить
         private void delete_click(object sender, RoutedEventArgs e)
         {
-            if (manufactureList.IsVisible) deleteFromManufactures();
-            else deleteFromCatalog();  
+
+            if (manufactureList.IsVisible) deleteFunction = deleteFromManufactures;
+            else deleteFunction = deleteFromCatalog;
+            // запуск делегата
+            deleteFunction(); 
+
         }
 
         // кнопка добавить
