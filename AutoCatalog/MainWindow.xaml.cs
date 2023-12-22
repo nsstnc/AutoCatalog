@@ -35,15 +35,15 @@ namespace AutoCatalog
         Catalog catalog = new Catalog();
 
         // переменная для текущей подвески
-        SuspensionAndBrakes currentSuspensionAndBrakes;
+        SuspensionAndBrakes? currentSuspensionAndBrakes;
         
         // переменная для текущей комплектации
-        Configuration currentConfiguration;
+        Configuration? currentConfiguration;
         
         // переменная для текущего двигателя
-        Engine currentEngine;
+        Engine? currentEngine;
         // переменная для текущей коробки передач
-        Transmission currentTransmission;
+        Transmission? currentTransmission;
 
         // объявляем делегат удаления
         delegate void deleteFrom();
@@ -53,7 +53,7 @@ namespace AutoCatalog
         delegate void changeFrom(object sender, RoutedEventArgs e);
         changeFrom changeFunction;
 
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -63,9 +63,8 @@ namespace AutoCatalog
             // то же самое для производителей
             json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", Encoding.Default);
             manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
-           
 
-
+            fillComboBoxes();
 
             // задаем ресурсы каталога и производителей для отображения в ListBox
             catalogList.Items.Add(catalog.Get());
@@ -77,6 +76,105 @@ namespace AutoCatalog
             // обновляем каталог
             updateCatalog();
         }
+        
+
+        private void fillComboBoxes()
+        {
+            // наполняем комбобоксы
+            bodiesComboBox.ItemsSource = (new List<string> { 
+                "Седан", 
+                "Хэтчбек 5 дв." , 
+                "Хэтчбек 3 дв.",
+                "Лифтбек",
+                "Внедорожник 3 дв.",
+                "Внедорожник 5 дв.",
+                "Универсал",
+                "Купе",
+                "Минивэн",
+                "Пикап",
+                "Лимузин",
+                "Фургон",
+                "Кабриолет"});
+
+            typeOfDriveConfigComboBox.ItemsSource = (new List<string> {
+               "Полный",
+                "Передний",
+                "Задний",
+            });
+
+            typeOfDriveConfigComboBox.ItemsSource = (new List<string> {
+               "Полный",
+                "Передний",
+                "Задний",
+            });
+
+            typeEngineTextBox.ItemsSource = (new List<string> {
+                "ДВС",
+                "Гибрид",
+                "Электродвигатель",
+            });
+
+            cylindersEngineTextBox.ItemsSource = (new List<string>
+            {
+                 "Рядный",
+                "Оппозитный",
+                "V-образный",
+                "VR-образный",
+                "W-образный",
+                "Роторный",
+            });
+
+            typeOfBoostEngineTextBox.ItemsSource = (new List<string>
+            {
+                  "Резонансный",
+                "Механический",
+                "Газотурбинный",
+            });
+
+            enginePowerSupplySystemEngineTextBox.ItemsSource = (new List<string>
+            {
+                 "Бензин",
+                "Дизель",
+                "Газ",
+                "Электричество",
+            });
+
+            typeTransmissionTextBox.ItemsSource = (new List<string>
+            {
+                "Автоматическая",
+                "Механическая",
+                "Роботизированная",
+                "Вариативная",
+            });
+
+            typeOfFrontSuspensionComboBox.ItemsSource = (new List<string>
+            {
+                "Зависимая",
+                "Полунезависимая",
+                "Независимая",
+            });
+
+            typeOfBackSuspensionComboBox.ItemsSource = (new List<string>
+            {
+               "Зависимая",
+                "Полунезависимая",
+                "Независимая",
+            });
+
+            frontBrakesComboBox.ItemsSource = (new List<string>
+            {
+               "Дисковые",
+                "Барабанные",
+            });
+
+            backBrakesComboBox.ItemsSource = (new List<string>
+            {
+               "Дисковые",
+                "Барабанные",
+            });
+        }
+
+
 
         private void dropSelector()
         {
@@ -122,6 +220,8 @@ namespace AutoCatalog
                     info += createInfo(value);
                 }
             }
+
+           
             return info;
         }
 
@@ -234,6 +334,21 @@ namespace AutoCatalog
             clearChildrenBoxes(catalogAddingPanel);
             // открываем окно
             catalogAddingPanel.Visibility = Visibility.Visible;
+
+            // сбрасываем комбобоксы и кнопки в них
+            if ( configurationComboBox.Items.Count == 2) { configurationComboBox.Items.RemoveAt(1); createConfig.Content = "Создать"; }
+            if ( engineComboBox.Items.Count == 2) { engineComboBox.Items.RemoveAt(1); createEngineButton.Content = "Создать"; }
+            if ( transmissionComboBox.Items.Count == 2) { transmissionComboBox.Items.RemoveAt(1); createTransmissionButton.Content = "Создать"; }
+            if ( suspensionAndBrakesComboBox.Items.Count == 2) { suspensionAndBrakesComboBox.Items.RemoveAt(1); createSuspensionAndBrakesButton.Content = "Создать"; }
+            clearChildrenBoxes(engineCreatingPanel);
+            clearChildrenBoxes(transmissionCreatingPanel);
+            clearChildrenBoxes(suspensionAndBrakesCreatingPanel);
+            // обнуляем текущие экземпляры агрегатов
+            currentConfiguration = null;
+            currentEngine = null;
+            currentTransmission = null;
+            currentSuspensionAndBrakes = null;
+
             openedCatalog = true;
         }
 
@@ -242,12 +357,22 @@ namespace AutoCatalog
         {
             hideAllPages();
             catalogList.Visibility= Visibility.Visible;
+
+
+
+            // блокируем кнопку изменения
+            changeButton.IsEnabled = false;
+            // блокируем кнопку добавления
+            addButton.IsEnabled = false;
+  
         }
 
 
         // кнопка подтверждения добавления автомобиля в список
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            addButton.IsEnabled = true;
+
             Car car = new Car(name: nameTextBox.Text, 
                 generation: generationTextBox.Text, 
                 manufacturer: (Manufacturer)manufactures.Get()[manufacturesComboBox.SelectedIndex - 1],
@@ -283,8 +408,86 @@ namespace AutoCatalog
         {
             // закрываем окно добавления автомобиля в каталог
             hideAllPages();
+
+         
+            clearChildrenBoxes(configurationCreatingPanel);
+
             // открываем окно создания комплектации
             configurationCreatingPanel.Visibility = Visibility.Visible;
+
+
+            // забиваем поля значениями текущей комплектации, если она есть
+
+            if (currentConfiguration != null)
+            {
+                nameConfigTextBox.Text = currentConfiguration.Name;
+                // поле двигателя
+                string h = createInfo(currentEngine).Substring(0, 40) + "...";
+                createEngineButton.Content = "Изменить";
+                if (engineComboBox.Items.Count == 1) engineComboBox.Items.Add(h);
+                else engineComboBox.Items[engineComboBox.Items.Count - 1] = h;
+                // в качестве выбранного элемента задаем последний
+                engineComboBox.SelectedIndex = engineComboBox.Items.Count - 1;
+                // заполняем поля текущими данными
+                if (currentEngine != null)
+                {
+                    typeEngineTextBox.SelectedIndex = typeEngineTextBox.Items.IndexOf(currentEngine.TypeOfEngine);
+                    cylindersEngineTextBox.SelectedIndex = cylindersEngineTextBox.Items.IndexOf(currentEngine.CylinderArrangement);
+                    powerEngineTextBox.Text = currentEngine.Power.ToString();
+                    volumeEngineTextBox.Text = currentEngine.Volume.ToString();
+                    torqueEngineTextBox.Text = currentEngine.MaxTorque.ToString();
+                    numberOfCylindersEngineTextBox.Text = currentEngine.NumberOfCylinders.ToString();
+                    typeOfBoostEngineTextBox.SelectedIndex = typeOfBoostEngineTextBox.Items.IndexOf(currentEngine.TypeOfBoost);
+                    fuelGradeEngineTextBox.Text = currentEngine.FuelGrade.ToString();
+                    enginePowerSupplySystemEngineTextBox.SelectedIndex = enginePowerSupplySystemEngineTextBox.Items.IndexOf(currentEngine.EnginePowerSupplySystem);
+                }
+
+
+
+
+
+                // поле трансмиссии
+                h = createInfo(currentTransmission);
+                createTransmissionButton.Content = "Изменить";
+                if (transmissionComboBox.Items.Count == 1) transmissionComboBox.Items.Add(h);
+                else transmissionComboBox.Items[transmissionComboBox.Items.Count - 1] = h;
+                // в качестве выбранного элемента задаем последний
+                transmissionComboBox.SelectedIndex = transmissionComboBox.Items.Count - 1;
+                // заполняем поля текущими данными
+                if (currentTransmission != null)
+                {
+                    typeTransmissionTextBox.SelectedIndex = typeTransmissionTextBox.Items.IndexOf(currentTransmission.Type);
+                    numberOfGearsTransmissionTextBox.Text = currentTransmission.NumberOfGears.ToString();
+                }
+
+
+
+
+                // поле подвески
+                h = createInfo(currentSuspensionAndBrakes).Substring(0, 40) + "...";
+                createSuspensionAndBrakesButton.Content = "Изменить";
+                if (suspensionAndBrakesComboBox.Items.Count == 1) suspensionAndBrakesComboBox.Items.Add(h);
+                else suspensionAndBrakesComboBox.Items[suspensionAndBrakesComboBox.Items.Count - 1] = h;
+                // в качестве выбранного элемента задаем последний
+                suspensionAndBrakesComboBox.SelectedIndex = suspensionAndBrakesComboBox.Items.Count - 1;
+                // заполняем поля текущими данными
+                if (currentSuspensionAndBrakes != null)
+                {
+                    typeOfFrontSuspensionComboBox.SelectedIndex = typeOfFrontSuspensionComboBox.Items.IndexOf(currentSuspensionAndBrakes.TypeOfFrontSuspension);
+                    typeOfBackSuspensionComboBox.SelectedIndex = typeOfBackSuspensionComboBox.Items.IndexOf(currentSuspensionAndBrakes.TypeOfBackSuspension);
+                    frontBrakesComboBox.SelectedIndex = frontBrakesComboBox.Items.IndexOf(currentSuspensionAndBrakes.FrontBrakes);
+                    backBrakesComboBox.SelectedIndex = backBrakesComboBox.Items.IndexOf(currentSuspensionAndBrakes.BackBrakes);
+                }
+
+
+                typeOfDriveConfigComboBox.SelectedIndex = typeOfDriveConfigComboBox.Items.IndexOf(currentConfiguration.TypeOfDrive);
+                overclockingConfigTextBox.Text = currentConfiguration.Overclocking.ToString();
+                clearanceConfigTextBox.Text = currentConfiguration.Clearance.ToString();
+                curbWeightConfigTextBox.Text = currentConfiguration.CurbWeight.ToString();
+                fullWeightConfigTextBox.Text = currentConfiguration.FullWeight.ToString();
+                fuelTankVolumeConfigTextBox.Text = currentConfiguration.FuelTankVolume.ToString();
+                numberOfSeatsConfigTextBox.Text = currentConfiguration.NumberOfSeats.ToString();
+            }
         }
 
         // отмена создания комплектации
@@ -349,6 +552,10 @@ namespace AutoCatalog
             hideAllPages();
             // открываем окно создания двигателя
             engineCreatingPanel.Visibility = Visibility.Visible;
+            
+            
+      
+
         }
 
         // отмена создания двигателя
@@ -413,6 +620,9 @@ namespace AutoCatalog
             hideAllPages();
             // открываем окно создания трансмиссии
             transmissionCreatingPanel.Visibility = Visibility.Visible;
+   
+       
+
         }
 
         // отмена создания коробки передач
@@ -465,6 +675,7 @@ namespace AutoCatalog
             hideAllPages();
             // открываем окно создания подвески и тормозов
             suspensionAndBrakesCreatingPanel.Visibility = Visibility.Visible;
+
         }
 
         // отмена создания подвески и тормозов
@@ -534,10 +745,6 @@ namespace AutoCatalog
 
                                                              /* ОКНО ОТОБРАЖЕНИЯ КАТАЛОГА*/
 
-
-
-
-
         private void showCatalog(object sender, RoutedEventArgs e)
         {
             dropSelector();
@@ -572,16 +779,68 @@ namespace AutoCatalog
         // изменение из каталога
         private void changeFromCatalog(object sender, RoutedEventArgs e)
         {
+            // делаем активной кнопку изменения
+            changeButton.IsEnabled = true;
+
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
+            // открываем окно формы каталога
+            addInCatalog(sender, e);
 
-         
-            // обновляем список
+            // текущий объект автомобиля и текущие экземпляры классов нижних уровней
+            Car current = catalog.Get()[selected];
+            currentConfiguration = current.Configuration;
+            currentEngine = current.Configuration.Engine;
+            currentSuspensionAndBrakes = current.Configuration.SuspensionAndBrakes;
+            currentTransmission = current.Configuration.Transmission;
+
+            // заполняем поля текущими данными
+            nameTextBox.Text = current.Name;
+            generationTextBox.Text = current.Generation;
+            yearTextBox.Text = current.Year.ToString();
+            manufacturesComboBox.SelectedIndex = manufacturesComboBox.Items.IndexOf(current.Manufacturer.Name);
+
+            // заполнение поля конфигурации
+            string h = createInfo(currentConfiguration).Substring(0, 40) + "...";
+            createConfig.Content = "Изменить";
+            if (configurationComboBox.Items.Count == 1) configurationComboBox.Items.Add(h);
+            else configurationComboBox.Items[configurationComboBox.Items.Count - 1] = h;
+            // в качестве выбранного элемента задаем последний
+            configurationComboBox.SelectedIndex = configurationComboBox.Items.Count - 1;
+
+
+            bodiesComboBox.SelectedIndex = bodiesComboBox.Items.IndexOf(current.Body);
+            categoryTextBox.Text = current.Category;
+
+            
+        }
+        // подтверждение изменения
+        private void changeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // сохраняем индекс текущего выбранного элемента
+            int selected = catalogList.SelectedIndex;
+            // создаем новый экземпляр класса с новыми заполненными данными
+            Car car = new Car(name: nameTextBox.Text,
+                generation: generationTextBox.Text,
+                manufacturer: (Manufacturer)manufactures.Get()[manufacturesComboBox.SelectedIndex - 1],
+                year: int.Parse(yearTextBox.Text),
+                configuration: currentConfiguration,
+                body: bodiesComboBox.Text,
+                category: categoryTextBox.Text);
+
+            // заменяем элемент
+            catalog.ChangeItem(selected, car);
+            // обновляем каталог
             updateCatalog();
-            // задаем новый выбранный элемент предыдущему
-            catalogList.SelectedIndex = selected - 1;
+
+           
+            // закрываем окно
+            cancelButton_Click(sender, e);
+            // ставим фокус списка на текущий элемент
+            catalogList.SelectedIndex = selected;
             catalogList.Focus();
         }
+
 
         // обработчик изменения выбранного элемента
         private void catalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -627,10 +886,6 @@ namespace AutoCatalog
         }
 
 
-
-
-
-
         // изменение из производителей
         private void changeFromManufactures(object sender, RoutedEventArgs e)
         {
@@ -641,8 +896,7 @@ namespace AutoCatalog
             int selected = manufactureList.SelectedIndex;
             // открываем окно формы производителей
             addInManufacturers(sender, e);
-            // показываем необходимую кнопку
-            manufactureChangeButton.Visibility = Visibility.Visible;
+            
 
             // текущий объект класса производителей
             Manufacturer current = manufactures.Get()[selected];
@@ -729,18 +983,23 @@ namespace AutoCatalog
                 manufactureAddButton.IsEnabled = true;
                 addInManufacturers(sender, e);
             }
-            else addInCatalog(sender, e);
-        }
+            else
+            {
+                addInCatalog(sender, e);
+                // делаем кнопку активной
+                addButton.IsEnabled = true;
+            }
+           }
 
-        // кнопка изменить
-        private void change_click(object sender, RoutedEventArgs e)
+            // кнопка изменить
+            private void change_click(object sender, RoutedEventArgs e)
         {
-
             if (manufactureList.IsVisible) changeFunction = changeFromManufactures;
             else changeFunction = changeFromCatalog;
             // запуск делегата
             changeFunction(sender, e);
         }
 
+        
     }
 }
