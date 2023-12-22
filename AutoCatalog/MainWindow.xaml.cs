@@ -49,6 +49,11 @@ namespace AutoCatalog
         delegate void deleteFrom();
         deleteFrom deleteFunction;
 
+        // объявляем делегат изменения
+        delegate void changeFrom();
+        deleteFrom changeFunction;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -555,11 +560,24 @@ namespace AutoCatalog
             catalogList.Focus();
         }
 
+        // изменение из каталога
+        private void changeFromCatalog()
+        {
+            // сохраняем индекс текущего выбранного элемента
+            int selected = catalogList.SelectedIndex;
+
+         
+            // обновляем список
+            updateCatalog();
+            // задаем новый выбранный элемент предыдущему
+            catalogList.SelectedIndex = selected - 1;
+            catalogList.Focus();
+        }
+
         // обработчик изменения выбранного элемента
         private void catalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (catalogList.SelectedIndex == -1) DeleteButton.IsEnabled = false;
-            else DeleteButton.IsEnabled = true;
+            activityOfButtons();
         }
   
 
@@ -597,22 +615,51 @@ namespace AutoCatalog
             // задаем новый выбранный элемент предыдущему
             manufactureList.SelectedIndex = selected - 1;
             manufactureList.Focus();
-
         }
+
+        // изменение из производителей
+        private void changeFromManufactures()
+        {
+            // сохраняем индекс текущего выбранного элемента
+            int selected = manufactureList.SelectedIndex;
+
+            // обновляем список
+            updateManufactures();
+            // задаем новый выбранный элемент предыдущему
+            manufactureList.SelectedIndex = selected - 1;
+            manufactureList.Focus();
+        }
+
         // обработчик изменения выбранного элемента
         private void manufacrures_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (manufactureList.SelectedIndex == -1) DeleteButton.IsEnabled = false;
-            else DeleteButton.IsEnabled = true;
+            activityOfButtons();
         }
 
-  
 
 
 
 
 
 
+
+
+
+        // переключить отображение кнопок удаления и изменения
+        private void activityOfButtons()
+        {
+            // если хоть на одной странице есть выбранный элемент, то показываем кнопки
+            if (manufactureList.SelectedIndex != -1 || catalogList.SelectedIndex != -1)
+            {
+                DeleteButton.IsEnabled = true;
+                ChangeButton.IsEnabled = true;
+            }
+            else
+            {
+                DeleteButton.IsEnabled = false;
+                ChangeButton.IsEnabled = false;
+            }
+        }
 
         // кнопка удалить
         private void delete_click(object sender, RoutedEventArgs e)
@@ -622,7 +669,6 @@ namespace AutoCatalog
             else deleteFunction = deleteFromCatalog;
             // запуск делегата
             deleteFunction(); 
-
         }
 
         // кнопка добавить
@@ -633,6 +679,15 @@ namespace AutoCatalog
             else addInCatalog(sender, e);
         }
 
+        // кнопка изменить
+        private void change_click(object sender, RoutedEventArgs e)
+        {
+
+            if (manufactureList.IsVisible) changeFunction = changeFromManufactures;
+            else changeFunction = changeFromCatalog;
+            // запуск делегата
+            changeFunction();
+        }
 
 
 
