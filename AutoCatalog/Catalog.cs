@@ -29,6 +29,19 @@ namespace AutoCatalog
         }
         // удаление элемента из контейнера по индексу
         public override void RemoveItem(int index) { items.RemoveAt(index); }
+        // замена элемента в контейнере
+        public override void ChangeItem(int index, Car item)
+        {
+            bool contain = false;
+            // для каждого элемента в списке получаем свойства и сравниваем с текущим элементов, если все свойства совпадают, то такой объект уже есть
+            foreach (Car included_item in items)
+            {
+                contain = item.GetType().GetProperties().All(s => s.GetValue(item).ToString().ToLower() == s.GetValue(included_item).ToString().ToLower());
+            }
+            // если такого элемента нет, то делаем замену
+            if (!contain) items[index] = item;
+
+        }
         public override List<Car> Get(){ return items; }
 
     }

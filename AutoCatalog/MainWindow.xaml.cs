@@ -50,8 +50,8 @@ namespace AutoCatalog
         deleteFrom deleteFunction;
 
         // объявляем делегат изменения
-        delegate void changeFrom();
-        deleteFrom changeFunction;
+        delegate void changeFrom(object sender, RoutedEventArgs e);
+        changeFrom changeFunction;
 
 
         public MainWindow()
@@ -171,24 +171,33 @@ namespace AutoCatalog
             // закрываем одно окно и открываем другое
             hideAllPages();
             manufacturesAddingPanel.Visibility = Visibility.Visible;
+            
+
         }
 
-     
+
 
         // закрытие окна добавления производителя
         private void cancelButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
+            
+
             // закрываем окно добавления производителя
             hideAllPages();
             // открываем необходимое окно
             if (openedCatalog) { catalogAddingPanel.Visibility = Visibility.Visible; }
             else manufactureList.Visibility = Visibility.Visible;
+
+            // блокируем кнопку изменения
+            manufactureChangeButton.IsEnabled = false;
+            // блокируем кнопку добавления
+            manufactureAddButton.IsEnabled = false;
         }
 
         // кнопка подтверждения добавления производителя в список производителей
         private void addButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
-            // создаем экземпляр нового производителя и закрываем окно
+            // создаем экземпляр нового производителя
             Manufacturer manufacturer = new Manufacturer(name: nameManufactureTextBox.Text, yearOfFoundation: int.Parse(yearOfFoundationTextBox.Text), country: countryTextBox.Text);
             manufactures.AddItem(manufacturer);
 
@@ -561,7 +570,7 @@ namespace AutoCatalog
         }
 
         // изменение из каталога
-        private void changeFromCatalog()
+        private void changeFromCatalog(object sender, RoutedEventArgs e)
         {
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
@@ -617,18 +626,58 @@ namespace AutoCatalog
             manufactureList.Focus();
         }
 
+
+
+
+
+
         // изменение из производителей
-        private void changeFromManufactures()
+        private void changeFromManufactures(object sender, RoutedEventArgs e)
+        {
+            // делаем активной кнопку изменения
+            manufactureChangeButton.IsEnabled = true;
+
+            // сохраняем индекс текущего выбранного элемента
+            int selected = manufactureList.SelectedIndex;
+            // открываем окно формы производителей
+            addInManufacturers(sender, e);
+            // показываем необходимую кнопку
+            manufactureChangeButton.Visibility = Visibility.Visible;
+
+            // текущий объект класса производителей
+            Manufacturer current = manufactures.Get()[selected];
+            // заполняем поля текущими данными
+            nameManufactureTextBox.Text = current.Name;
+            yearOfFoundationTextBox.Text = current.YearOfFoundation.ToString();
+            countryTextBox.Text = current.Country;
+        }
+
+        // подтверждение изменения
+        private void changeButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
             // сохраняем индекс текущего выбранного элемента
             int selected = manufactureList.SelectedIndex;
 
+
+            // создаем экземпляр производителя с новыми данными из полей
+            Manufacturer manufacturer = new Manufacturer(name: nameManufactureTextBox.Text, yearOfFoundation: int.Parse(yearOfFoundationTextBox.Text), country: countryTextBox.Text);
+            // заменяем элемент
+            manufactures.ChangeItem(selected, manufacturer);
+
+
             // обновляем список
             updateManufactures();
-            // задаем новый выбранный элемент предыдущему
-            manufactureList.SelectedIndex = selected - 1;
+            // закрываем окно
+            cancelButtonManufacture_Click(sender, e);
+            // ставим фокус на текущий элемент
+            manufactureList.SelectedIndex = selected;
             manufactureList.Focus();
         }
+
+
+
+
+
 
         // обработчик изменения выбранного элемента
         private void manufacrures_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -675,7 +724,11 @@ namespace AutoCatalog
         private void add_click(object sender, RoutedEventArgs e)
         {
             dropSelector();
-            if (manufactureList.IsVisible) addInManufacturers(sender, e);
+            if (manufactureList.IsVisible)
+            {
+                manufactureAddButton.IsEnabled = true;
+                addInManufacturers(sender, e);
+            }
             else addInCatalog(sender, e);
         }
 
@@ -686,10 +739,8 @@ namespace AutoCatalog
             if (manufactureList.IsVisible) changeFunction = changeFromManufactures;
             else changeFunction = changeFromCatalog;
             // запуск делегата
-            changeFunction();
+            changeFunction(sender, e);
         }
-
-
 
     }
 }

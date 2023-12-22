@@ -12,6 +12,7 @@ namespace AutoCatalog
         public abstract List<T> items { get; set; }
         public abstract void AddItem(T item);
         public abstract void RemoveItem(int index);
+        public abstract void ChangeItem(int index, T item);
         public abstract List<T> Get();
     }
     

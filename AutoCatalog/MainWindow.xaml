@@ -273,15 +273,8 @@
             <TextBox x:Name="nameManufactureTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
 
             <TextBlock Margin="10,0,0,0" Text="Год основания"/>
-            <TextBox x:Name="yearOfFoundationTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-                <TextBox.Text>
-                    <Binding Path="year">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <TextBox x:Name="yearOfFoundationTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
+
 
             <TextBlock Margin="10,0,0,0" Text="Страна"/>
             <TextBox x:Name="countryTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left"/>
@@ -289,7 +282,8 @@
 
             <StackPanel Orientation="Horizontal">
                 <Button x:Name ="cancelButtonManufacture" Content="Отмена" Margin="10,0,10,0" Background="DarkRed" Click="cancelButtonManufacture_Click"/>
-                <Button x:Name ="manufactureAddButton" Content="Добавить" Click="addButtonManufacture_Click" />
+                <Button x:Name ="manufactureAddButton" Content="Добавить" Margin="0,0,10,0" Click="addButtonManufacture_Click" IsEnabled="False"/>
+                <Button x:Name ="manufactureChangeButton" Content="Изменить" Click="changeButtonManufacture_Click" IsEnabled="False"/>
             </StackPanel>
         </StackPanel>
 
