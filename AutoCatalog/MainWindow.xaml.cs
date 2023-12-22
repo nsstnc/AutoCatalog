@@ -53,10 +53,10 @@ namespace AutoCatalog
         {
             InitializeComponent();
             // считываем  json строку из файла и десериализируем ее в контейнер
-            string json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json");
+            string json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", Encoding.Default);
             catalog = JsonConvert.DeserializeObject<Catalog>(json);
             // то же самое для производителей
-            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json");
+            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", Encoding.Default);
             manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
            
 
@@ -154,7 +154,7 @@ namespace AutoCatalog
             manufacturesComboBox.Items.Add(x);
             foreach (Manufacturer manufacturer in manufactures.Get())
             {
-                manufacturesComboBox.Items.Add(manufacturer.Name);
+                manufacturesComboBox.Items.Add(((Manufacturer)manufacturer).Name);
                 manufactureList.Items.Add(manufacturer);
             }
         }
@@ -632,6 +632,9 @@ namespace AutoCatalog
             if (manufactureList.IsVisible) addInManufacturers(sender, e);
             else addInCatalog(sender, e);
         }
+
+
+
 
     }
 }
