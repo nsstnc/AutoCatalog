@@ -28,14 +28,15 @@ namespace AutoCatalog
         // флаг открытого каталога
         bool openedCatalog = false;
 
-        
+        /*
         // инициализируем список производителей
         Manufactures manufactures = new Manufactures();
         // инициализируем каталог
         Catalog catalog = new Catalog();
-
+        */
+        DataService dbdata = new DataService(new CatalogAppContext());
         // переменная для текущей подвески
-        SuspensionAndBrakes? currentSuspensionAndBrakes;
+        SuspensionAndBrake? currentSuspensionAndBrakes;
         
         // переменная для текущей комплектации
         Configuration? currentConfiguration;
@@ -57,18 +58,21 @@ namespace AutoCatalog
         public MainWindow()
         {
             InitializeComponent();
+            /*
             // считываем  json строку из файла и десериализируем ее в контейнер
             string json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", Encoding.Default);
             catalog = JsonConvert.DeserializeObject<Catalog>(json);
             // то же самое для производителей
             json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", Encoding.Default);
             manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
+            */
+
 
             fillComboBoxes();
 
             // задаем ресурсы каталога и производителей для отображения в ListBox
-            catalogList.Items.Add(catalog.Get());
-            manufactureList.Items.Add(manufactures.Get());
+            catalogList.Items.Add(dbdata.GetAllCars());
+            manufactureList.Items.Add(dbdata.GetAllManufactures());
 
             // обновляем производителей
             updateManufactures();
@@ -257,9 +261,11 @@ namespace AutoCatalog
             x.Click += addInManufacturers;
 
             manufacturesComboBox.Items.Add(x);
-            foreach (Manufacturer manufacturer in manufactures.Get())
+
+            var manufactures = dbdata.GetAllManufactures();
+            foreach (var manufacturer in manufactures)
             {
-                manufacturesComboBox.Items.Add(((Manufacturer)manufacturer).Name);
+                manufacturesComboBox.Items.Add(manufacturer.Name);
                 manufactureList.Items.Add(manufacturer);
             }
         }
@@ -297,8 +303,9 @@ namespace AutoCatalog
         // кнопка подтверждения добавления производителя в список производителей
         private void addButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // создаем экземпляр нового производителя
-            Manufacturer manufacturer = new Manufacturer(name: nameManufactureTextBox.Text, yearOfFoundation: int.Parse(yearOfFoundationTextBox.Text), country: countryTextBox.Text);
+            Manufacturer manufacturer = new Manufacturer() { Name = nameManufactureTextBox.Text, YearOfFoundation = int.Parse(yearOfFoundationTextBox.Text), Country = countryTextBox.Text };
             manufactures.AddItem(manufacturer);
 
             updateManufactures();
@@ -309,6 +316,7 @@ namespace AutoCatalog
 
             // в качестве выбранного элемента задаем последний
             manufacturesComboBox.SelectedIndex = manufactures.Get().Count;
+            */
         }
 
 
@@ -321,7 +329,8 @@ namespace AutoCatalog
         private void updateCatalog() 
         { 
             catalogList.Items.Clear();
-            foreach (Car car in catalog.Get()) catalogList.Items.Add(car);
+            var cars = dbdata.GetAllCars();
+            foreach (CarTemplate car in cars) catalogList.Items.Add(car);
         }
 
 
@@ -371,6 +380,7 @@ namespace AutoCatalog
         // кнопка подтверждения добавления автомобиля в список
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             addButton.IsEnabled = true;
 
             Car car = new Car(name: nameTextBox.Text, 
@@ -396,6 +406,7 @@ namespace AutoCatalog
             createEngineButton.Content = "Создать";
             createTransmissionButton.Content = "Создать";
             createSuspensionAndBrakesButton.Content = "Создать";
+            */
         }
 
        
@@ -481,7 +492,7 @@ namespace AutoCatalog
 
 
                 typeOfDriveConfigComboBox.SelectedIndex = typeOfDriveConfigComboBox.Items.IndexOf(currentConfiguration.TypeOfDrive);
-                overclockingConfigTextBox.Text = currentConfiguration.Overclocking.ToString();
+                overclockingConfigTextBox.Text = currentConfiguration.OverClocking.ToString();
                 clearanceConfigTextBox.Text = currentConfiguration.Clearance.ToString();
                 curbWeightConfigTextBox.Text = currentConfiguration.CurbWeight.ToString();
                 fullWeightConfigTextBox.Text = currentConfiguration.FullWeight.ToString();
@@ -502,7 +513,7 @@ namespace AutoCatalog
         // подтверждение создания комплектации
         private void createButtonConfig_Click(object sender, RoutedEventArgs e)
         {
-
+            /*
 
             currentConfiguration = new Configuration(name: nameConfigTextBox.Text,
                 engine: currentEngine,
@@ -534,7 +545,7 @@ namespace AutoCatalog
             configurationComboBox.SelectedIndex = configurationComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonConfig_Click(sender, e);
-            
+            */
         }
 
 
@@ -553,9 +564,6 @@ namespace AutoCatalog
             // открываем окно создания двигателя
             engineCreatingPanel.Visibility = Visibility.Visible;
             
-            
-      
-
         }
 
         // отмена создания двигателя
@@ -570,6 +578,7 @@ namespace AutoCatalog
         // подтверждение создания двигателя
         private void createButtonEngine_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // задаем новый экземпляр текущего двигателя
             currentEngine = new Engine(
                 typeOfEngine: typeEngineTextBox.Text.ToString(),
@@ -602,6 +611,7 @@ namespace AutoCatalog
             engineComboBox.SelectedIndex = engineComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonEngine_Click(sender, e);
+            */
         }
 
 
@@ -637,6 +647,7 @@ namespace AutoCatalog
         // подтверждение создания коробки передач
         private void createButtonTransmission_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // задаем новый экземпляр текущей коробки передач
             currentTransmission = new Transmission(
                 type: typeTransmissionTextBox.Text,
@@ -660,6 +671,7 @@ namespace AutoCatalog
             transmissionComboBox.SelectedIndex = transmissionComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonTransmission_Click(sender, e);
+            */
         }
 
 
@@ -690,6 +702,7 @@ namespace AutoCatalog
         // подтверждение создания подвески и тормозов
         private void createButtonSuspensionAndBrakes_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // задаем новый экземпляр текущей коробки передач
             currentSuspensionAndBrakes = new SuspensionAndBrakes(typeOfFrontSuspension: typeOfFrontSuspensionComboBox.Text.ToString(),
                 typeOfBackSuspension: typeOfBackSuspensionComboBox.Text.ToString(),
@@ -714,6 +727,7 @@ namespace AutoCatalog
             suspensionAndBrakesComboBox.SelectedIndex = suspensionAndBrakesComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonSuspensionAndBrakes_Click(sender, e);
+            */
         }
 
 
@@ -728,7 +742,7 @@ namespace AutoCatalog
             // очищаем файлы
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", string.Empty);
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
-
+            /*
             // используя поток записываем в json файл сериализованный объект контейнера
             using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", false))
             {
@@ -739,6 +753,7 @@ namespace AutoCatalog
             {
                 w.Write(JsonConvert.SerializeObject(manufactures));
             }
+            */
         }
 
 
@@ -764,6 +779,7 @@ namespace AutoCatalog
         // удаление из каталога
         private void deleteFromCatalog()
         {
+            /*
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
 
@@ -774,11 +790,13 @@ namespace AutoCatalog
             // задаем новый выбранный элемент предыдущему
             catalogList.SelectedIndex = selected - 1;
             catalogList.Focus();
+            */
         }
 
         // изменение из каталога
         private void changeFromCatalog(object sender, RoutedEventArgs e)
         {
+            /*
             // делаем активной кнопку изменения
             changeButton.IsEnabled = true;
 
@@ -812,11 +830,12 @@ namespace AutoCatalog
             bodiesComboBox.SelectedIndex = bodiesComboBox.Items.IndexOf(current.Body);
             categoryTextBox.Text = current.Category;
 
-            
+            */
         }
         // подтверждение изменения
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
             // создаем новый экземпляр класса с новыми заполненными данными
@@ -839,6 +858,7 @@ namespace AutoCatalog
             // ставим фокус списка на текущий элемент
             catalogList.SelectedIndex = selected;
             catalogList.Focus();
+            */
         }
 
 
@@ -873,6 +893,7 @@ namespace AutoCatalog
         // удаление из производителей
         private void deleteFromManufactures()
         {
+            /*
             // сохраняем индекс текущего выбранного элемента
             int selected = manufactureList.SelectedIndex;
 
@@ -883,12 +904,14 @@ namespace AutoCatalog
             // задаем новый выбранный элемент предыдущему
             manufactureList.SelectedIndex = selected - 1;
             manufactureList.Focus();
+            */
         }
 
 
         // изменение из производителей
         private void changeFromManufactures(object sender, RoutedEventArgs e)
         {
+            /*
             // делаем активной кнопку изменения
             manufactureChangeButton.IsEnabled = true;
 
@@ -904,11 +927,13 @@ namespace AutoCatalog
             nameManufactureTextBox.Text = current.Name;
             yearOfFoundationTextBox.Text = current.YearOfFoundation.ToString();
             countryTextBox.Text = current.Country;
+            */
         }
 
         // подтверждение изменения
         private void changeButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // сохраняем индекс текущего выбранного элемента
             int selected = manufactureList.SelectedIndex;
 
@@ -926,6 +951,7 @@ namespace AutoCatalog
             // ставим фокус на текущий элемент
             manufactureList.SelectedIndex = selected;
             manufactureList.Focus();
+            */
         }
 
 

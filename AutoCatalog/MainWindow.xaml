@@ -121,86 +121,86 @@
                         <TextBlock Grid.Row="0" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Generation}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="1" Grid.Column="0" FontSize="11" Text="Производитель" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Manufacturer.Name}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Manufacturer}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="1" Grid.Column="2" FontSize="11" Text="Год выпуска" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="1" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Year}" HorizontalAlignment="Left" />
                         
                         <TextBlock Grid.Row="2" Grid.Column="0" FontSize="11" Text="Год основания" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Manufacturer.YearOfFoundation}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=YearOfFoundation}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="2" Grid.Column="2" FontSize="11" Text="Страна" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Manufacturer.Country}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Country}" HorizontalAlignment="Left" />
                         
                         <TextBlock Grid.Row="3" Grid.Column="0" FontSize="11" Text="Комлектация" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Name}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="3" Grid.Column="2" FontSize="11" Text="Тип двигателя" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="3" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.TypeOfEngine}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="3" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=TypeOfEngine}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="4" Grid.Column="0" FontSize="11" Text="Расположение цилиндров" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.CylinderArrangement}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=CylinderArrangement}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="4" Grid.Column="2" FontSize="11" Text="Мощность двигателя, л.с." HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="4" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.Power}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="4" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Power}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="5" Grid.Column="0" FontSize="11" Text="Объем двигателя, см.куб." HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.Volume}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Volume}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="5" Grid.Column="2" FontSize="11" Text="Макс. крутящий момент, Н*м" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="5" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.MaxTorque}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="5" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=MaxTorque}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="6" Grid.Column="0" FontSize="11" Text="Количество цилиндров" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.NumberOfCylinders}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=NumberOfCylinders}" HorizontalAlignment="Left" />
 
 
                         <TextBlock Grid.Row="6" Grid.Column="2" FontSize="11" Text="Тип наддува" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="6" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.TypeOfBoost}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="6" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=TypeOfBoost}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="7" Grid.Column="0" FontSize="11" Text="Марка топлива" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="7" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.FuelGrade}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="7" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=FuelGrade}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="7" Grid.Column="2" FontSize="11" Text="Система питания двигателя" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="7" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Engine.EnginePowerSupplySystem}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="7" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=EnginePowerSupplySystem}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="8" Grid.Column="0" FontSize="11" Text="Тип трансмиссии" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="8" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Transmission.Type}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="8" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=TransmissionType}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="8" Grid.Column="2" FontSize="11" Text="Количество передач" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="8" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Transmission.NumberOfGears}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="8" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=NumberOfGears}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="9" Grid.Column="0" FontSize="11" Text="Тип передней подвески" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="9" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.SuspensionAndBrakes.TypeOfFrontSuspension}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="9" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=TypeOfFrontSuspension}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="9" Grid.Column="2" FontSize="11" Text="Тип задней подвески" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="9" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.SuspensionAndBrakes.TypeOfBackSuspension}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="9" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=TypeOfBackSuspension}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="10" Grid.Column="0" FontSize="11" Text="Передние тормоза" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="10" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.SuspensionAndBrakes.FrontBrakes}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="10" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=FrontBrakes}" HorizontalAlignment="Left" />
                         
                         <TextBlock Grid.Row="10" Grid.Column="2" FontSize="11" Text="Задние тормоза" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="10" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.SuspensionAndBrakes.BackBrakes}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="10" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=BackBrakes}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="11" Grid.Column="0" FontSize="11" Text="Тип привода" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="11" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.TypeOfDrive}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="11" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=TypeOfDrive}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="11" Grid.Column="2" FontSize="11" Text="Разгон до 100 км/ч, сек." HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="11" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Overclocking}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="11" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=OverClocking}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="12" Grid.Column="0" FontSize="11" Text="Дорожный просвет, мм" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="12" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.Clearance}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="12" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Clearance}" HorizontalAlignment="Left" />
                         
                         <TextBlock Grid.Row="12" Grid.Column="2" FontSize="11" Text="Снаряженная масса, кг" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="12" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.CurbWeight}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="12" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=CurbWeight}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="13" Grid.Column="0" FontSize="11" Text="Полная масса, кг" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="13" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.FullWeight}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="13" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=FullWeight}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="13" Grid.Column="2" FontSize="11" Text="Объем топливного бака, л" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="13" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.FuelTankVolume}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="13" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=FuelTankVolume}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="14" Grid.Column="0" FontSize="11" Text="Кол-во мест" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Row="14" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration.NumberOfSeats}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Row="14" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=NumberOfSeats}" HorizontalAlignment="Left" />
 
 
                         <TextBlock Grid.Row="14" Grid.Column="2" FontSize="11" Text="Кузов" HorizontalAlignment="Left" />

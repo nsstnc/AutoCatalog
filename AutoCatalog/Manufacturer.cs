@@ -15,3 +15,12 @@ public partial class Manufacturer
 
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
 }
+
+public class ManufacturerTemplate 
+{
+    public string? Name { get; set; }
+
+    public long? YearOfFoundation { get; set; }
+
+    public string? Country { get; set; }
+}

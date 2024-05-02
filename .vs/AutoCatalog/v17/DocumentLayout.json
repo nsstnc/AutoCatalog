@@ -3,36 +3,44 @@
   "WorkspaceRootPath": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\engine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\engine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\suspensionandbrakes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\suspensionandbrakes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\suspensionandbrake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\suspensionandbrake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\transmission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\transmission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\engine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\engine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\catalogappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\catalogappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,108 +50,154 @@
       "DocumentGroups": [
         {
           "DockedWidth": 155,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Configuration.cs",
-              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Configuration.cs",
-              "RelativeDocumentMoniker": "AutoCatalog\\Configuration.cs",
-              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Configuration.cs",
-              "RelativeToolTip": "AutoCatalog\\Configuration.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAswA4AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T15:52:26.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Transmission.cs",
-              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Transmission.cs",
-              "RelativeDocumentMoniker": "AutoCatalog\\Transmission.cs",
-              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Transmission.cs",
-              "RelativeToolTip": "AutoCatalog\\Transmission.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T14:59:09.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SuspensionAndBrakes.cs",
-              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\SuspensionAndBrakes.cs",
-              "RelativeDocumentMoniker": "AutoCatalog\\SuspensionAndBrakes.cs",
-              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\SuspensionAndBrakes.cs",
-              "RelativeToolTip": "AutoCatalog\\SuspensionAndBrakes.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T14:59:08.442Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Engine.cs",
-              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Engine.cs",
-              "RelativeDocumentMoniker": "AutoCatalog\\Engine.cs",
-              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Engine.cs",
-              "RelativeToolTip": "AutoCatalog\\Engine.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwCQAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T14:59:07.138Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Car.cs",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Car.cs",
               "RelativeDocumentMoniker": "AutoCatalog\\Car.cs",
               "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Car.cs",
               "RelativeToolTip": "AutoCatalog\\Car.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAxwCAAAAAAAAAA",
+              "ViewState": "AQIAAEkAAAAAAAAAAAA2wFgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T14:38:24.337Z",
+              "WhenOpened": "2024-05-02T20:07:08.079Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Catalog.cs",
-              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Catalog.cs",
-              "RelativeDocumentMoniker": "AutoCatalog\\Catalog.cs",
-              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Catalog.cs",
-              "RelativeToolTip": "AutoCatalog\\Catalog.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAwwCYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T13:16:09.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Manufacturer.cs",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Manufacturer.cs",
               "RelativeDocumentMoniker": "AutoCatalog\\Manufacturer.cs",
               "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Manufacturer.cs",
               "RelativeToolTip": "AutoCatalog\\Manufacturer.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAowDUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T13:16:09.085Z",
+              "WhenOpened": "2024-05-02T19:26:49.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "AutoCatalog\\MainWindow.xaml",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml",
+              "RelativeToolTip": "AutoCatalog\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-02T17:38:24.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CatalogAppContext.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\CatalogAppContext.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\CatalogAppContext.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\CatalogAppContext.cs",
+              "RelativeToolTip": "AutoCatalog\\CatalogAppContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T17:20:57.231Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "b01f0443-c1df-468c-b5e4-19abcb9f59cb",
+        "Display": 0,
+        "X": 389,
+        "Y": 180,
+        "Width": 979,
+        "Height": 442,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Engine.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Engine.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\Engine.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Engine.cs",
+              "RelativeToolTip": "AutoCatalog\\Engine.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T20:09:27.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SuspensionAndBrake.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\SuspensionAndBrake.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\SuspensionAndBrake.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\SuspensionAndBrake.cs",
+              "RelativeToolTip": "AutoCatalog\\SuspensionAndBrake.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T17:23:32.161Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Configuration.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Configuration.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\Configuration.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Configuration.cs",
+              "RelativeToolTip": "AutoCatalog\\Configuration.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA/wBsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T17:39:37.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Transmission.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Transmission.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\Transmission.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Transmission.cs",
+              "RelativeToolTip": "AutoCatalog\\Transmission.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T20:10:20.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataService.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\DataService.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\DataService.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\DataService.cs",
+              "RelativeToolTip": "AutoCatalog\\DataService.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwFUAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T17:35:06.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "AutoCatalog\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml.cs",
               "RelativeToolTip": "AutoCatalog\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAqwFEAAAAAAAAA",
+              "ViewState": "AQIAACQBAAAAAAAAAADwvwsBAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T14:26:14.367Z",
               "EditorCaption": ""
