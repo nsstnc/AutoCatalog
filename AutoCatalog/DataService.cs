@@ -34,7 +34,46 @@ namespace AutoCatalog
             return manufactures.ToList();
         }
 
+        public void AddManufacturer(Manufacturer manufacturer)
+        {
+            manufacturer.Id = db.Manufacturers.Count();
+            db.Manufacturers.Add(manufacturer);
+            db.SaveChanges();
+        }
 
+        public void AddCar(Car car)
+        {
+            car.Id = db.Cars.Count();
+            db.Cars.Add(car);
+            db.SaveChanges();
+        }
+        public void AddTransmission(Transmission transmission)
+        {
+            transmission.Id = db.Transmissions.Count();
+            db.Transmissions.Add(transmission);
+            db.SaveChanges();
+        }
+        public void AddSuspensionAndBrakes(SuspensionAndBrake suspension)
+        {
+            suspension.Id = db.SuspensionAndBrakes.Count();
+            db.SuspensionAndBrakes.Add(suspension);
+            db.SaveChanges();
+        }
+
+        public void AddConfiguration(Configuration config)
+        {
+            config.Id = db.Configurations.Count();
+            db.Configurations.Add(config);
+            db.SaveChanges();
+        }
+
+
+        public void AddEngine(Engine engine)
+        {
+            engine.Id = db.Engines.Count();
+            db.Engines.Add(engine);
+            db.SaveChanges();
+        }
 
 
         public List<CarTemplate> GetAllCars()

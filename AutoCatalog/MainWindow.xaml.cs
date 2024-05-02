@@ -215,14 +215,14 @@ namespace AutoCatalog
             
             foreach (var property in obj.GetType().GetProperties())
             {
-                var value = property.GetValue(obj);
+                var value = property.GetValue(obj, null);
                 // если значение свойства строка или число, добавляем его в инфо
                 if ((value is string) || (value is int) || (value is double)) info += value + ", ";
                 // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
-                else
-                {
-                    info += createInfo(value);
-                }
+                //else
+                //{
+                //    info += createInfo(value);
+               // }
             }
 
            
@@ -303,10 +303,10 @@ namespace AutoCatalog
         // кнопка подтверждения добавления производителя в список производителей
         private void addButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             // создаем экземпляр нового производителя
             Manufacturer manufacturer = new Manufacturer() { Name = nameManufactureTextBox.Text, YearOfFoundation = int.Parse(yearOfFoundationTextBox.Text), Country = countryTextBox.Text };
-            manufactures.AddItem(manufacturer);
+            dbdata.AddManufacturer(manufacturer);
 
             updateManufactures();
 
@@ -315,8 +315,8 @@ namespace AutoCatalog
            
 
             // в качестве выбранного элемента задаем последний
-            manufacturesComboBox.SelectedIndex = manufactures.Get().Count;
-            */
+            manufacturesComboBox.SelectedIndex = dbdata.GetAllManufactures().Count;
+            
         }
 
 
@@ -380,18 +380,19 @@ namespace AutoCatalog
         // кнопка подтверждения добавления автомобиля в список
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
+
             addButton.IsEnabled = true;
 
-            Car car = new Car(name: nameTextBox.Text, 
-                generation: generationTextBox.Text, 
-                manufacturer: (Manufacturer)manufactures.Get()[manufacturesComboBox.SelectedIndex - 1],
-                year: int.Parse(yearTextBox.Text),
-                configuration: currentConfiguration,
-                body: bodiesComboBox.Text,
-                category: categoryTextBox.Text);
+            Car car = new Car() { Name = nameTextBox.Text, 
+                Generation = generationTextBox.Text, 
+                ManufacturerId = manufacturesComboBox.SelectedIndex - 1,
+                Year = int.Parse(yearTextBox.Text),
+                ConfigurationId = currentConfiguration.Id,
+                Body = bodiesComboBox.Text,
+                Category = categoryTextBox.Text};
 
-            catalog.AddItem(car);
+            dbdata.AddCar(car);
+
             updateCatalog();
             hideAllPages();
             catalogList.Visibility = Visibility.Visible;
@@ -406,7 +407,7 @@ namespace AutoCatalog
             createEngineButton.Content = "Создать";
             createTransmissionButton.Content = "Создать";
             createSuspensionAndBrakesButton.Content = "Создать";
-            */
+            
         }
 
        
@@ -432,8 +433,11 @@ namespace AutoCatalog
             if (currentConfiguration != null)
             {
                 nameConfigTextBox.Text = currentConfiguration.Name;
+
+
                 // поле двигателя
-                string h = createInfo(currentEngine).Substring(0, 40) + "...";
+                string info = createInfo(currentEngine);
+                string h = info.Substring(0, Math.Min(40, info.Length)) + "...";
                 createEngineButton.Content = "Изменить";
                 if (engineComboBox.Items.Count == 1) engineComboBox.Items.Add(h);
                 else engineComboBox.Items[engineComboBox.Items.Count - 1] = h;
@@ -458,7 +462,8 @@ namespace AutoCatalog
 
 
                 // поле трансмиссии
-                h = createInfo(currentTransmission);
+                info = createInfo(currentTransmission);
+                h = info.Substring(0, Math.Min(40, info.Length)) + "...";
                 createTransmissionButton.Content = "Изменить";
                 if (transmissionComboBox.Items.Count == 1) transmissionComboBox.Items.Add(h);
                 else transmissionComboBox.Items[transmissionComboBox.Items.Count - 1] = h;
@@ -475,7 +480,8 @@ namespace AutoCatalog
 
 
                 // поле подвески
-                h = createInfo(currentSuspensionAndBrakes).Substring(0, 40) + "...";
+                info = createInfo(currentSuspensionAndBrakes);
+                h = info.Substring(0, Math.Min(40, info.Length)) + "...";
                 createSuspensionAndBrakesButton.Content = "Изменить";
                 if (suspensionAndBrakesComboBox.Items.Count == 1) suspensionAndBrakesComboBox.Items.Add(h);
                 else suspensionAndBrakesComboBox.Items[suspensionAndBrakesComboBox.Items.Count - 1] = h;
@@ -513,21 +519,27 @@ namespace AutoCatalog
         // подтверждение создания комплектации
         private void createButtonConfig_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
 
-            currentConfiguration = new Configuration(name: nameConfigTextBox.Text,
-                engine: currentEngine,
-                transmission: currentTransmission,
-                suspensionAndBrakes: currentSuspensionAndBrakes,
-                typeOfDrive: typeOfDriveConfigComboBox.Text,
-                overClocking: decimal.Parse(overclockingConfigTextBox.Text),
-                clearance: int.Parse(clearanceConfigTextBox.Text),
-                curbWeight: int.Parse(curbWeightConfigTextBox.Text),
-                fullWeight: int.Parse(fullWeightConfigTextBox.Text),
-                fuelTankVolume: int.Parse(fuelTankVolumeConfigTextBox.Text),
-                numberOfSeats: int.Parse(numberOfSeatsConfigTextBox.Text));
+            currentConfiguration = new Configuration(){
+                Name = nameConfigTextBox.Text,
+                Engine = currentEngine,
+                TransmissionId = currentTransmission.Id,
+                SuspensionAndBrakesId = currentSuspensionAndBrakes.Id,
+                TypeOfDrive = typeOfDriveConfigComboBox.Text,
+                OverClocking = decimal.Parse(overclockingConfigTextBox.Text),
+                Clearance = int.Parse(clearanceConfigTextBox.Text),
+                CurbWeight = int.Parse(curbWeightConfigTextBox.Text),
+                FullWeight = int.Parse(fullWeightConfigTextBox.Text),
+                FuelTankVolume = int.Parse(fuelTankVolumeConfigTextBox.Text),
+                NumberOfSeats = int.Parse(numberOfSeatsConfigTextBox.Text)
+                };
 
-            string h = createInfo(currentConfiguration).Substring(0, 40) + "...";
+            // добавляем запись в базу данных
+            dbdata.AddConfiguration(currentConfiguration);
+
+            string info = createInfo(currentConfiguration);
+            string h = info.Substring(0, Math.Min(40, info.Length)) + "...";
             // если ни одна комплектация еще не была добавлена (длина комбобокса = 1, в нем только кнопка)
             if (configurationComboBox.Items.Count == 1)
             {
@@ -545,7 +557,7 @@ namespace AutoCatalog
             configurationComboBox.SelectedIndex = configurationComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonConfig_Click(sender, e);
-            */
+            
         }
 
 
@@ -578,21 +590,24 @@ namespace AutoCatalog
         // подтверждение создания двигателя
         private void createButtonEngine_Click(object sender, RoutedEventArgs e)
         {
-            /*
+
             // задаем новый экземпляр текущего двигателя
-            currentEngine = new Engine(
-                typeOfEngine: typeEngineTextBox.Text.ToString(),
-                cylinderArrangement: cylindersEngineTextBox.Text.ToString(),
-                power: int.Parse(powerEngineTextBox.Text),
-                volume: int.Parse(volumeEngineTextBox.Text),
-                maxTorque: int.Parse(torqueEngineTextBox.Text),
-                numberOfCylinders: int.Parse(numberOfCylindersEngineTextBox.Text),
-                typeOfBoost: typeOfBoostEngineTextBox.Text.ToString(),
-                fuelGrade: fuelGradeEngineTextBox.Text.ToString(),
-                enginePowerSupplySystem: enginePowerSupplySystemEngineTextBox.Text.ToString());
+            currentEngine = new Engine() {
+                TypeOfEngine = typeEngineTextBox.Text.ToString(),
+                CylinderArrangement = cylindersEngineTextBox.Text.ToString(),
+                Power = int.Parse(powerEngineTextBox.Text),
+                Volume = int.Parse(volumeEngineTextBox.Text),
+                MaxTorque = int.Parse(torqueEngineTextBox.Text),
+                NumberOfCylinders = int.Parse(numberOfCylindersEngineTextBox.Text),
+                TypeOfBoost = typeOfBoostEngineTextBox.Text.ToString(),
+                FuelGrade = fuelGradeEngineTextBox.Text.ToString(),
+                EnginePowerSupplySystem = enginePowerSupplySystemEngineTextBox.Text.ToString()};
 
+            // добавляем запись в базу данных
+            dbdata.AddEngine(currentEngine);
 
-            string h = createInfo(currentEngine).Substring(0, 40) + "...";
+            string info = createInfo(currentEngine);
+            string h = info.Substring(0, Math.Min(40, info.Length)) + "...";
 
             // если ни один двигатель еще не был добавлен (длина комбобокса = 1, в нем только кнопка)
             if (engineComboBox.Items.Count == 1)
@@ -611,7 +626,7 @@ namespace AutoCatalog
             engineComboBox.SelectedIndex = engineComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonEngine_Click(sender, e);
-            */
+            
         }
 
 
@@ -647,12 +662,14 @@ namespace AutoCatalog
         // подтверждение создания коробки передач
         private void createButtonTransmission_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             // задаем новый экземпляр текущей коробки передач
-            currentTransmission = new Transmission(
-                type: typeTransmissionTextBox.Text,
-                numberOfGears: int.Parse(numberOfGearsTransmissionTextBox.Text));
-
+            currentTransmission = new Transmission() {
+                Type = typeTransmissionTextBox.Text,
+                NumberOfGears = int.Parse(numberOfGearsTransmissionTextBox.Text)
+            };
+            // добавляем запись в базу данных
+            dbdata.AddTransmission(currentTransmission);
 
             // если ни одна коробка еще не был добавлена (длина комбобокса = 1, в нем только кнопка)
             if (transmissionComboBox.Items.Count == 1)
@@ -671,7 +688,7 @@ namespace AutoCatalog
             transmissionComboBox.SelectedIndex = transmissionComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonTransmission_Click(sender, e);
-            */
+            
         }
 
 
@@ -702,14 +719,19 @@ namespace AutoCatalog
         // подтверждение создания подвески и тормозов
         private void createButtonSuspensionAndBrakes_Click(object sender, RoutedEventArgs e)
         {
-            /*
             // задаем новый экземпляр текущей коробки передач
-            currentSuspensionAndBrakes = new SuspensionAndBrakes(typeOfFrontSuspension: typeOfFrontSuspensionComboBox.Text.ToString(),
-                typeOfBackSuspension: typeOfBackSuspensionComboBox.Text.ToString(),
-                backBrakes: backBrakesComboBox.Text.ToString(),
-                frontBrakes: frontBrakesComboBox.Text.ToString());
+            currentSuspensionAndBrakes = new SuspensionAndBrake(){
+                //Id = dbdata.SuspensionsCount(),
+                TypeOfFrontSuspension = typeOfFrontSuspensionComboBox.Text.ToString(),
+                TypeOfBackSuspension = typeOfBackSuspensionComboBox.Text.ToString(),
+                BackBrakes = backBrakesComboBox.Text.ToString(),
+                FrontBrakes = frontBrakesComboBox.Text.ToString()
+            };
+            // добавляем запись в базу данных
+            dbdata.AddSuspensionAndBrakes(currentSuspensionAndBrakes);
 
-            string h = createInfo(currentSuspensionAndBrakes).Substring(0, 40) + "...";
+            string info = createInfo(currentSuspensionAndBrakes);
+            string h = info.Substring(0, Math.Min(40, info.Length)) + "...";
             // если ни один двигатель еще не был добавлен (длина комбобокса = 1, в нем только кнопка)
             if (suspensionAndBrakesComboBox.Items.Count == 1)
             {
@@ -727,22 +749,22 @@ namespace AutoCatalog
             suspensionAndBrakesComboBox.SelectedIndex = suspensionAndBrakesComboBox.Items.Count - 1;
             // закрываем окно
             cancelButtonSuspensionAndBrakes_Click(sender, e);
-            */
         }
 
 
 
 
-                                                            /* ЗАКРЫТИЕ ОКНА */
+        /* ЗАКРЫТИЕ ОКНА */
 
-
+        
         // действие при закрытии приложения
         private void Window_Close(object sender, CancelEventArgs e)
         {
+            /*
             // очищаем файлы
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", string.Empty);
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
-            /*
+            
             // используя поток записываем в json файл сериализованный объект контейнера
             using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", false))
             {
@@ -755,10 +777,11 @@ namespace AutoCatalog
             }
             */
         }
+        
 
 
 
-                                                             /* ОКНО ОТОБРАЖЕНИЯ КАТАЛОГА*/
+        /* ОКНО ОТОБРАЖЕНИЯ КАТАЛОГА*/
 
         private void showCatalog(object sender, RoutedEventArgs e)
         {
