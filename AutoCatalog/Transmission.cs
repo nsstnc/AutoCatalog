@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoCatalog
+namespace AutoCatalog;
+
+public partial class Transmission
 {
-    internal class Transmission
-    {
-        public string Type {  get; }
-        public int NumberOfGears { get; }
-        public Transmission(string type, int numberOfGears)
-        {   
-            Type = type;
-            NumberOfGears = numberOfGears;
-        }   
-    }
+    public long Id { get; set; }
+
+    public string? Type { get; set; }
+
+    public long? NumberOfGears { get; set; }
+
+    public virtual ICollection<Configuration> Configurations { get; set; } = new List<Configuration>();
 }

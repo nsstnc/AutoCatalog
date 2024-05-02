@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoCatalog
+namespace AutoCatalog;
+
+public partial class Configuration
 {
-    // класс описывающий комплектацию
-    internal class Configuration
-    {
-        public string Name { get; }
-        public Engine Engine { get; }
-        public Transmission Transmission { get; }
-        public SuspensionAndBrakes SuspensionAndBrakes { get; }
-        public string TypeOfDrive { get; }
-        public decimal Overclocking { get; }
-        public int Clearance { get; }
-        public int CurbWeight { get; }
-        public int FullWeight { get; }
-        public int FuelTankVolume {  get; }
-        public int NumberOfSeats { get; }
+    public long Id { get; set; }
 
-        public Configuration(string name, Engine engine, Transmission transmission, SuspensionAndBrakes suspensionAndBrakes,
-            string typeOfDrive, decimal overClocking, int clearance, int curbWeight, int fullWeight, int fuelTankVolume, int numberOfSeats)
-        {
-           
-            Name = name;
-            Engine = engine;
-            Transmission = transmission;
-            SuspensionAndBrakes = suspensionAndBrakes;
-            TypeOfDrive = typeOfDrive;
-            Overclocking = overClocking;
-            Clearance = clearance;
-            CurbWeight = curbWeight;
-            FullWeight = fullWeight;
-            FuelTankVolume = fuelTankVolume;
-            NumberOfSeats = numberOfSeats;
-        }  
-    }
+    public string? Name { get; set; }
+
+    public long? EngineId { get; set; }
+
+    public long? TransmissionId { get; set; }
+
+    public string? TypeOfDrive { get; set; }
+
+    public decimal? OverClocking { get; set; }
+
+    public long? Clearance { get; set; }
+
+    public long? CurbWeight { get; set; }
+
+    public long? FullWeight { get; set; }
+
+    public long? FuelTankVolume { get; set; }
+
+    public long? NumberOfSeats { get; set; }
+
+    public long? SuspensionAndBrakesId { get; set; }
+
+    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
+
+    public virtual Engine? Engine { get; set; }
+
+    public virtual SuspensionAndBrake? SuspensionAndBrakes { get; set; }
+
+    public virtual Transmission? Transmission { get; set; }
 }

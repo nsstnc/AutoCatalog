@@ -26,3 +26,32 @@ D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.genruntimeconfig
 D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\ref\AutoCatalog.dll
 D:\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 D:\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog_Content.g.cs
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\AutoCatalog.exe
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\AutoCatalog.deps.json
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\AutoCatalog.runtimeconfig.json
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\AutoCatalog.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\AutoCatalog.pdb
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.csproj.AssemblyReference.cache
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\App.g.cs
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog_Content.g.cs
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog_MarkupCompile.cache
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog_MarkupCompile.lref
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\App.baml
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\MainWindow.baml
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.g.resources
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.AssemblyInfoInputs.cache
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.AssemblyInfo.cs
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.csproj.CoreCompileInputs.cache
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.sourcelink.json
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCata.DE5FEA41.Up2Date
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\refint\AutoCatalog.dll
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.pdb
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\AutoCatalog.genruntimeconfig.cache
+D:\Desktop\учеба\3 семестр\курсовая_3_семестр\catalog\AutoCatalog\AutoCatalog\obj\Debug\net6.0-windows\ref\AutoCatalog.dll

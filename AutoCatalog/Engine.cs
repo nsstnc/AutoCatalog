@@ -1,37 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoCatalog
+namespace AutoCatalog;
+
+public partial class Engine
 {
-    // класс описывающий двигатель
-    internal class Engine
-    {
+    public long Id { get; set; }
 
-        public string TypeOfEngine { get; }
-        public string CylinderArrangement { get; }
-        public int Power { get; }
-        public int Volume { get; }
-        public int MaxTorque { get; }
-        public int NumberOfCylinders { get; }
-        public string TypeOfBoost { get; }
-        public string FuelGrade { get; }
-        public string EnginePowerSupplySystem { get; }
+    public string? CylinderArrangement { get; set; }
 
-        public Engine(string typeOfEngine, string cylinderArrangement, int power, int volume, int maxTorque, int numberOfCylinders,
-            string typeOfBoost, string fuelGrade, string enginePowerSupplySystem)
-        {
-            TypeOfEngine = typeOfEngine;
-            CylinderArrangement = cylinderArrangement;
-            Power = power;
-            Volume = volume;
-            MaxTorque = maxTorque;
-            NumberOfCylinders = numberOfCylinders;
-            TypeOfBoost = typeOfBoost;
-            FuelGrade = fuelGrade;
-            EnginePowerSupplySystem = enginePowerSupplySystem;
-        }
-    }
+    public string? TypeOfEngine { get; set; }
+
+    public long? Power { get; set; }
+
+    public long? Volume { get; set; }
+
+    public long? MaxTorque { get; set; }
+
+    public long? NumberOfCylinders { get; set; }
+
+    public string? TypeOfBoost { get; set; }
+
+    public string? FuelGrade { get; set; }
+
+    public string? EnginePowerSupplySystem { get; set; }
+
+    public virtual ICollection<Configuration> Configurations { get; set; } = new List<Configuration>();
 }

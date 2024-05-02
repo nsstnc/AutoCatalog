@@ -1,32 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoCatalog
+namespace AutoCatalog;
+
+public partial class Car
 {
-    // класс автомобиля - содержит информацию об автомобиле
-    internal class Car
-    {
-        public string Name { get; }
-        public string Generation { get; }
-        public Manufacturer Manufacturer { get;}
-        public int Year { get; }
-        public Configuration Configuration { get; }
-        public string Body { get; }
-        public string Category { get; }
+    public long Id { get; set; }
 
+    public string? Name { get; set; }
 
-        public Car(string name, string generation, Manufacturer manufacturer, int year, Configuration configuration, string body, string category) 
-        {
-            Name = name;
-            Generation = generation;
-            Manufacturer = manufacturer;
-            Year = year;
-            Configuration = configuration;
-            Body = body;
-            Category = category;
-        }
-    }
+    public string? Generation { get; set; }
+
+    public long? ManufacturerId { get; set; }
+
+    public long? Year { get; set; }
+
+    public long? ConfigurationId { get; set; }
+
+    public string? Body { get; set; }
+
+    public string? Category { get; set; }
+
+    public virtual Configuration? Configuration { get; set; }
+
+    public virtual Manufacturer? Manufacturer { get; set; }
 }
