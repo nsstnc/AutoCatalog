@@ -916,25 +916,30 @@ namespace AutoCatalog
         // удаление из производителей
         private void deleteFromManufactures()
         {
-            /*
+            
             // сохраняем индекс текущего выбранного элемента
             int selected = manufactureList.SelectedIndex;
 
-            // удаляем элемент
-            manufactures.RemoveItem(selected);
-            // обновляем список
+            ManufacturerTemplate item = (ManufacturerTemplate)manufactureList.Items[selected];
+
+            dbdata.DeleteManifacturer(item);
+
+            // обновляем список производителей
             updateManufactures();
+            // обновляем список каталога
+            updateCatalog();
+
             // задаем новый выбранный элемент предыдущему
             manufactureList.SelectedIndex = selected - 1;
             manufactureList.Focus();
-            */
+            
         }
 
 
         // изменение из производителей
         private void changeFromManufactures(object sender, RoutedEventArgs e)
         {
-            /*
+            
             // делаем активной кнопку изменения
             manufactureChangeButton.IsEnabled = true;
 
@@ -945,36 +950,45 @@ namespace AutoCatalog
             
 
             // текущий объект класса производителей
-            Manufacturer current = manufactures.Get()[selected];
+            ManufacturerTemplate current = (ManufacturerTemplate)manufactureList.Items[selected];
             // заполняем поля текущими данными
             nameManufactureTextBox.Text = current.Name;
             yearOfFoundationTextBox.Text = current.YearOfFoundation.ToString();
             countryTextBox.Text = current.Country;
-            */
+            
         }
 
         // подтверждение изменения
         private void changeButtonManufacture_Click(object sender, RoutedEventArgs e)
         {
-            /*
+
             // сохраняем индекс текущего выбранного элемента
             int selected = manufactureList.SelectedIndex;
 
+            ManufacturerTemplate manufacturer_old = (ManufacturerTemplate)manufactureList.Items[selected];
 
             // создаем экземпляр производителя с новыми данными из полей
-            Manufacturer manufacturer = new Manufacturer(name: nameManufactureTextBox.Text, yearOfFoundation: int.Parse(yearOfFoundationTextBox.Text), country: countryTextBox.Text);
+            ManufacturerTemplate manufacturer = new ManufacturerTemplate()
+            {
+                Name = nameManufactureTextBox.Text, 
+                YearOfFoundation = int.Parse(yearOfFoundationTextBox.Text),
+                Country = countryTextBox.Text
+             };
+
+
             // заменяем элемент
-            manufactures.ChangeItem(selected, manufacturer);
+            dbdata.UpdateManufacturer(manufacturer_old, manufacturer);
 
-
-            // обновляем список
+            // обновляем список производителей
             updateManufactures();
+            // обновляем каталог
+            updateCatalog();
             // закрываем окно
             cancelButtonManufacture_Click(sender, e);
             // ставим фокус на текущий элемент
             manufactureList.SelectedIndex = selected;
             manufactureList.Focus();
-            */
+            
         }
 
 

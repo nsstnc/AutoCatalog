@@ -75,6 +75,31 @@ namespace AutoCatalog
             db.SaveChanges();
         }
 
+        public void DeleteManifacturer(ManufacturerTemplate manufacturer)
+        {
+
+            db.Manufacturers.Where(p => p.Name == manufacturer.Name &&
+                p.YearOfFoundation == manufacturer.YearOfFoundation &&
+                p.Country == manufacturer.Country).ExecuteDelete();
+
+            db.SaveChanges();
+        }
+
+        public void UpdateManufacturer(ManufacturerTemplate old, ManufacturerTemplate new_)
+        {
+            db.Manufacturers.Where(p => p.Name == old.Name &&
+                p.YearOfFoundation == old.YearOfFoundation &&
+                p.Country == old.Country)
+                .ExecuteUpdate(s => 
+                            s.SetProperty(u => u.Name, u => new_.Name)
+                            .SetProperty(u => u.YearOfFoundation, u => new_.YearOfFoundation)
+                            .SetProperty(u => u.Country, u => new_.Country));
+
+
+            db.SaveChanges();
+        }
+
+
 
         public List<CarTemplate> GetAllCars()
         {

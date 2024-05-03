@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCatalog"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="AutoCatalog.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        x:Class="AutoCatalog.MainWindow"
         mc:Ignorable="d"
         Closing="Window_Close"
         MouseDown="Window_MouseDown"
         Title="AutoCatalog" Height="700" Width="800" MinWidth="800" MinHeight="700" MaxWidth="800" MaxHeight="700">
-   
+
 
     <Grid  Margin="0,10,0,0">
         <Grid.ColumnDefinitions>
@@ -80,8 +81,8 @@
                 </Style>
             </ListBox.ItemContainerStyle>
 
-            
-            
+
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid  Margin="0,0,0,0" >
@@ -125,13 +126,13 @@
 
                         <TextBlock Grid.Row="1" Grid.Column="2" FontSize="11" Text="Год выпуска" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="1" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Year}" HorizontalAlignment="Left" />
-                        
+
                         <TextBlock Grid.Row="2" Grid.Column="0" FontSize="11" Text="Год основания" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="2" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=YearOfFoundation}" HorizontalAlignment="Left" />
 
                         <TextBlock Grid.Row="2" Grid.Column="2" FontSize="11" Text="Страна" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="2" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=Country}" HorizontalAlignment="Left" />
-                        
+
                         <TextBlock Grid.Row="3" Grid.Column="0" FontSize="11" Text="Комлектация" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="3" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Configuration}" HorizontalAlignment="Left" />
 
@@ -177,7 +178,7 @@
 
                         <TextBlock Grid.Row="10" Grid.Column="0" FontSize="11" Text="Передние тормоза" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="10" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=FrontBrakes}" HorizontalAlignment="Left" />
-                        
+
                         <TextBlock Grid.Row="10" Grid.Column="2" FontSize="11" Text="Задние тормоза" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="10" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=BackBrakes}" HorizontalAlignment="Left" />
 
@@ -189,7 +190,7 @@
 
                         <TextBlock Grid.Row="12" Grid.Column="0" FontSize="11" Text="Дорожный просвет, мм" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="12" Grid.Column="1" FontSize="11" FontWeight="Bold" Text="{Binding Path=Clearance}" HorizontalAlignment="Left" />
-                        
+
                         <TextBlock Grid.Row="12" Grid.Column="2" FontSize="11" Text="Снаряженная масса, кг" HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="12" Grid.Column="3" FontSize="11" FontWeight="Bold" Text="{Binding Path=CurbWeight}" HorizontalAlignment="Left" />
 
@@ -274,7 +275,7 @@
         </StackPanel>
 
 
-       
+
 
         <StackPanel x:Name="configurationCreatingPanel" Grid.Column="1" Visibility="Hidden">
 
@@ -330,12 +331,12 @@
 
             <TextBlock Margin="10,0,0,0" Text="Тип двигателя"/>
             <ComboBox x:Name="typeEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-               
+
             </ComboBox>
 
             <TextBlock Margin="10,0,0,0" Text="Расположение цилиндров"/>
             <ComboBox x:Name="cylindersEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-               
+
             </ComboBox>
 
             <TextBlock Margin="10,0,0,0" Text="Мощность в л.с."/>
@@ -352,7 +353,7 @@
 
             <TextBlock Margin="10,0,0,0" Text="Тип наддува"/>
             <ComboBox x:Name="typeOfBoostEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-              
+
             </ComboBox>
 
             <TextBlock Margin="10,0,0,0" Text="Марка топлива"/>
@@ -360,7 +361,7 @@
 
             <TextBlock Margin="10,0,0,0" Text="Система питания двигателя"/>
             <ComboBox x:Name="enginePowerSupplySystemEngineTextBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-               
+
             </ComboBox>
 
             <StackPanel Orientation="Horizontal">
@@ -390,23 +391,23 @@
 
             <TextBlock Margin="10,0,0,0" Text="Тип передней подвески"/>
             <ComboBox x:Name="typeOfFrontSuspensionComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-                
+
             </ComboBox>
 
             <TextBlock Margin="10,0,0,0" Text="Тип задней подвески"/>
             <ComboBox x:Name="typeOfBackSuspensionComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-                
+
             </ComboBox>
 
 
             <TextBlock Margin="10,0,0,0" Text="Передние тормоза"/>
             <ComboBox x:Name="frontBrakesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-                
+
             </ComboBox>
 
             <TextBlock Margin="10,0,0,0" Text="Задние тормоза"/>
             <ComboBox x:Name="backBrakesComboBox" BorderThickness="1" Width="300" Margin="10,0,0,10" HorizontalAlignment="Left">
-             
+
             </ComboBox>
 
             <StackPanel Orientation="Horizontal">
@@ -414,6 +415,7 @@
                 <Button x:Name ="addButtonSuspensionAndBrakes" Content="Сохранить" Click="createButtonSuspensionAndBrakes_Click" />
             </StackPanel>
         </StackPanel>
+        <TextBox x:Name="log" HorizontalAlignment="Left" Margin="18,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="70"/>
 
 
 
