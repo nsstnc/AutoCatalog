@@ -28,6 +28,8 @@ public partial class Car
 
 public class CarTemplate
 {
+
+    public long? Id { get; set; }
     public string? Name { get; set; }
     public string? Generation { get; set; }
     public string? Manufacturer { get; set; }

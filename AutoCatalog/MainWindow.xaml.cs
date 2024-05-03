@@ -802,18 +802,27 @@ namespace AutoCatalog
         // удаление из каталога
         private void deleteFromCatalog()
         {
-            /*
+            
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
 
+            CarTemplate item = (CarTemplate)catalogList.Items[selected];
             // удаляем элемент
-            catalog.RemoveItem(selected);
+            dbdata.DeleteCar(item);
+
+
+
+
             // обновляем список
             updateCatalog();
+            updateManufactures();
+
+
+
             // задаем новый выбранный элемент предыдущему
             catalogList.SelectedIndex = selected - 1;
             catalogList.Focus();
-            */
+            
         }
 
         // изменение из каталога

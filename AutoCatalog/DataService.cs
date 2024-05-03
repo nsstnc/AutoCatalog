@@ -99,7 +99,34 @@ namespace AutoCatalog
             db.SaveChanges();
         }
 
+        public void DeleteCar(CarTemplate car)
+        {
 
+            List<CarTemplate> cars = this.GetAllCars();
+
+            // получаем автомобиль по id
+            var item = db.Cars.FirstOrDefault(p => p.Id == car.Id);
+
+            if (item != null) {
+
+                var itemConfiguration = db.Configurations.FirstOrDefault(p => p.Id ==  item.ConfigurationId);
+                if (itemConfiguration != null)
+                {
+                    // удаляем зависимые элементы конфигурации
+                    db.Engines.Where(p => p.Id == itemConfiguration.EngineId).ExecuteDelete();
+                    db.Transmissions.Where(p => p.Id == itemConfiguration.TransmissionId).ExecuteDelete();
+                    db.SuspensionAndBrakes.Where(p => p.Id == itemConfiguration.SuspensionAndBrakesId).ExecuteDelete();
+                    // удаляем конфигурацию
+                    db.Configurations.Remove(itemConfiguration);
+                }
+
+                // удаляем автомобиль
+                db.Cars.Remove(item);
+            };
+
+            
+            db.SaveChanges();
+        }
 
         public List<CarTemplate> GetAllCars()
         {
@@ -112,6 +139,7 @@ namespace AutoCatalog
                            join suspensionAndBrakes in db.SuspensionAndBrakes on configuration.SuspensionAndBrakesId equals suspensionAndBrakes.Id
                            select new CarTemplate
                            {
+                               Id = car.Id,
                                Name = car.Name,
                                Generation = car.Generation,
                                Manufacturer = manufacturer.Name,

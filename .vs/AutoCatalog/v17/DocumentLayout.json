@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|solutionrelative:autocatalog\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30F67AA7-0E2E-4D57-8A5C-BA210CCF74F1}|AutoCatalog\\AutoCatalog.csproj|d:\\desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\autocatalog\\autocatalog\\catalogappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,33 +38,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "AutoCatalog\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml.cs",
               "RelativeToolTip": "AutoCatalog\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAMADAAAAAAAAAAAYwNMDAAA4AAAA",
+              "ViewState": "AQIAABsDAAAAAAAAAAAiwDEDAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T14:17:36.245Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Car.cs",
-              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Car.cs",
-              "RelativeDocumentMoniker": "AutoCatalog\\Car.cs",
-              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Car.cs",
-              "RelativeToolTip": "AutoCatalog\\Car.cs",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAqwFgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T20:07:08.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Manufacturer.cs",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Manufacturer.cs",
               "RelativeDocumentMoniker": "AutoCatalog\\Manufacturer.cs",
@@ -92,11 +79,24 @@
         },
         {
           "DockedWidth": 172,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Car.cs",
+              "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Car.cs",
+              "RelativeDocumentMoniker": "AutoCatalog\\Car.cs",
+              "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\Car.cs",
+              "RelativeToolTip": "AutoCatalog\\Car.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAmwB8AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T16:00:16.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\MainWindow.xaml",
               "RelativeDocumentMoniker": "AutoCatalog\\MainWindow.xaml",
@@ -108,13 +108,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DataService.cs",
               "DocumentMoniker": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\DataService.cs",
               "RelativeDocumentMoniker": "AutoCatalog\\DataService.cs",
               "ToolTip": "D:\\Desktop\\\u0443\u0447\u0435\u0431\u0430\\3 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F_3_\u0441\u0435\u043C\u0435\u0441\u0442\u0440\\catalog\\AutoCatalog\\AutoCatalog\\DataService.cs",
               "RelativeToolTip": "AutoCatalog\\DataService.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAvwFkAAAAQAAAA",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAmwIkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T14:18:44.743Z",
               "EditorCaption": ""
