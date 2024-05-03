@@ -806,9 +806,19 @@ namespace AutoCatalog
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
 
-            CarTemplate item = (CarTemplate)catalogList.Items[selected];
+            CarTemplate current = (CarTemplate)catalogList.Items[selected];
+
+            currentConfiguration = dbdata.GetConfigByCar(current);
+            Manufacturer currentManufacturer = dbdata.GetManufacturerByCar(current);
+            currentEngine = dbdata.GetEngineByConfig(currentConfiguration);
+            currentSuspensionAndBrakes = dbdata.GetSuspensionByConfig(currentConfiguration);
+            currentTransmission = dbdata.GetTransmissionByConfig(currentConfiguration);
+
+
+
+
             // удаляем элемент
-            dbdata.DeleteCar(item);
+            dbdata.DeleteCar(current);
 
 
 
@@ -828,7 +838,7 @@ namespace AutoCatalog
         // изменение из каталога
         private void changeFromCatalog(object sender, RoutedEventArgs e)
         {
-            /*
+           
             // делаем активной кнопку изменения
             changeButton.IsEnabled = true;
 
@@ -838,21 +848,27 @@ namespace AutoCatalog
             addInCatalog(sender, e);
 
             // текущий объект автомобиля и текущие экземпляры классов нижних уровней
-            Car current = catalog.Get()[selected];
-            currentConfiguration = current.Configuration;
-            currentEngine = current.Configuration.Engine;
-            currentSuspensionAndBrakes = current.Configuration.SuspensionAndBrakes;
-            currentTransmission = current.Configuration.Transmission;
+            CarTemplate current = (CarTemplate)catalogList.Items[selected];
+
+
+
+            currentConfiguration = dbdata.GetConfigByCar(current);
+            Manufacturer currentManufacturer = dbdata.GetManufacturerByCar(current);
+            currentEngine = dbdata.GetEngineByConfig(currentConfiguration);
+            currentSuspensionAndBrakes = dbdata.GetSuspensionByConfig(currentConfiguration);
+            currentTransmission = dbdata.GetTransmissionByConfig(currentConfiguration);
 
             // заполняем поля текущими данными
             nameTextBox.Text = current.Name;
             generationTextBox.Text = current.Generation;
             yearTextBox.Text = current.Year.ToString();
-            manufacturesComboBox.SelectedIndex = manufacturesComboBox.Items.IndexOf(current.Manufacturer.Name);
+            manufacturesComboBox.SelectedIndex = manufacturesComboBox.Items.IndexOf(currentManufacturer.Name);
+
+
 
             // заполнение поля конфигурации
-            string h = createInfo(currentConfiguration).Substring(0, 40) + "...";
-            createConfig.Content = "Изменить";
+            string info = createInfo(currentConfiguration);
+            string h = info.Substring(0, Math.Min(40, info.Length)) + "..."; createConfig.Content = "Изменить";
             if (configurationComboBox.Items.Count == 1) configurationComboBox.Items.Add(h);
             else configurationComboBox.Items[configurationComboBox.Items.Count - 1] = h;
             // в качестве выбранного элемента задаем последний
@@ -862,25 +878,33 @@ namespace AutoCatalog
             bodiesComboBox.SelectedIndex = bodiesComboBox.Items.IndexOf(current.Body);
             categoryTextBox.Text = current.Category;
 
-            */
+           
         }
         // подтверждение изменения
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
+
+            // старый экземпляр автомобиля
+            CarTemplate old_car = (CarTemplate)catalogList.Items[selected];
+
+
             // создаем новый экземпляр класса с новыми заполненными данными
-            Car car = new Car(name: nameTextBox.Text,
-                generation: generationTextBox.Text,
-                manufacturer: (Manufacturer)manufactures.Get()[manufacturesComboBox.SelectedIndex - 1],
-                year: int.Parse(yearTextBox.Text),
-                configuration: currentConfiguration,
-                body: bodiesComboBox.Text,
-                category: categoryTextBox.Text);
+            Car car = new Car()
+            { 
+                Name = nameTextBox.Text,
+                Generation = generationTextBox.Text,
+                ManufacturerId = dbdata.GetManufacturerById((ManufacturerTemplate)manufactureList.Items[manufacturesComboBox.SelectedIndex - 1]),
+                Year = int.Parse(yearTextBox.Text),
+                ConfigurationId = currentConfiguration.Id,
+                Body = bodiesComboBox.Text,
+                Category = categoryTextBox.Text
+             };
 
             // заменяем элемент
-            catalog.ChangeItem(selected, car);
+            // dbdata.UpdateCar(old_car, car);
             // обновляем каталог
             updateCatalog();
 
@@ -890,7 +914,7 @@ namespace AutoCatalog
             // ставим фокус списка на текущий элемент
             catalogList.SelectedIndex = selected;
             catalogList.Focus();
-            */
+            
         }
 
 

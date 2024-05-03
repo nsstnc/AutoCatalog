@@ -18,6 +18,7 @@ public partial class Manufacturer
 
 public class ManufacturerTemplate 
 {
+    public long? Id { get; set; }
     public string? Name { get; set; }
 
     public long? YearOfFoundation { get; set; }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Automation.Peers;
 
 namespace AutoCatalog
 {
@@ -102,10 +103,45 @@ namespace AutoCatalog
         public void DeleteCar(CarTemplate car)
         {
 
-            List<CarTemplate> cars = this.GetAllCars();
+            // список всех автомобилей
+            List <CarTemplate> cars = this.GetAllCars();
 
-            // получаем автомобиль по id
-            var item = db.Cars.FirstOrDefault(p => p.Id == car.Id);
+            // получаем автомобиль по полям из списка
+            long? id = cars.FirstOrDefault(p =>
+                    p.Id == car.Id &&
+                    p.Name == car.Name &&
+                    p.Generation == car.Generation &&
+                    p.Manufacturer == car.Manufacturer &&
+                    p.YearOfFoundation == car.YearOfFoundation &&
+                    p.Country == car.Country &&
+                    p.Year == car.Year &&
+                    p.Configuration == car.Configuration &&
+                    p.TypeOfEngine == car.TypeOfEngine &&
+                    p.CylinderArrangement == car.CylinderArrangement &&
+                    p.Power == car.Power &&
+                    p.Volume == car.Volume &&
+                    p.MaxTorque == car.MaxTorque &&
+                    p.NumberOfCylinders == car.NumberOfCylinders &&
+                    p.TypeOfBoost == car.TypeOfBoost &&
+                    p.FuelGrade == car.FuelGrade &&
+                    p.EnginePowerSupplySystem == car.EnginePowerSupplySystem &&
+                    p.TransmissionType == car.TransmissionType &&
+                    p.NumberOfGears == car.NumberOfGears &&
+                    p.TypeOfFrontSuspension == car.TypeOfFrontSuspension &&
+                    p.TypeOfBackSuspension == car.TypeOfBackSuspension &&
+                    p.FrontBrakes == car.FrontBrakes &&
+                    p.BackBrakes == car.BackBrakes &&
+                    p.Body == car.Body &&
+                    p.Category == car.Category &&
+                    p.TypeOfDrive == car.TypeOfDrive &&
+                    p.OverClocking == car.OverClocking &&
+                    p.Clearance == car.Clearance &&
+                    p.CurbWeight == car.CurbWeight &&
+                    p.FullWeight == car.FullWeight &&
+                    p.FuelTankVolume == car.FuelTankVolume &&
+                    p.NumberOfSeats == car.NumberOfSeats).Id;
+
+            var item = db.Cars.FirstOrDefault(p => p.Id == id);
 
             if (item != null) {
 
@@ -127,6 +163,141 @@ namespace AutoCatalog
             
             db.SaveChanges();
         }
+
+        public void UpdateCar(CarTemplate old, Car new_, Engine new_engine, Transmission new_transmission, SuspensionAndBrake new_suspension, Configuration new_configuration)
+        {
+            Configuration confItem = new_configuration;
+
+            if (confItem != null)
+            {
+                // обновляем двигатель
+                db.Engines.Where(p => p.Id == confItem.EngineId)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.CylinderArrangement, u => new_engine.CylinderArrangement)
+                            .SetProperty(u => u.TypeOfEngine, u => new_engine.TypeOfEngine)
+                            .SetProperty(u => u.Power, u => new_engine.Power)
+                            .SetProperty(u => u.Volume, u => new_engine.Volume)
+                            .SetProperty(u => u.MaxTorque, u => new_engine.MaxTorque)
+                            .SetProperty(u => u.NumberOfCylinders, u => new_engine.NumberOfCylinders)
+                            .SetProperty(u => u.TypeOfBoost, u => new_engine.TypeOfBoost)
+                            .SetProperty(u => u.FuelGrade, u => new_engine.FuelGrade)
+                            .SetProperty(u => u.EnginePowerSupplySystem, u => new_engine.EnginePowerSupplySystem)
+                            );
+                // обновляем трансмиссию
+                db.Transmissions.Where(p => p.Id == confItem.TransmissionId)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.Type, u => new_transmission.Type)
+                            .SetProperty(u => u.NumberOfGears, u => new_transmission.NumberOfGears)
+                            );
+
+                // обновляем подвеску
+                db.SuspensionAndBrakes.Where(p => p.Id == confItem.SuspensionAndBrakesId)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.TypeOfFrontSuspension, u => new_suspension.TypeOfFrontSuspension)
+                            .SetProperty(u => u.TypeOfBackSuspension, u => new_suspension.TypeOfBackSuspension)
+                            .SetProperty(u => u.FrontBrakes, u => new_suspension.FrontBrakes)
+                            .SetProperty(u => u.BackBrakes, u => new_suspension.BackBrakes)
+                            );
+
+                // обновляем конфигурацию
+                db.Configurations.Where(p => p.Id == confItem.Id)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.Name, u => new_configuration.Name)
+                            .SetProperty(u => u.TypeOfDrive, u => new_configuration.TypeOfDrive)
+                            .SetProperty(u => u.OverClocking, u => new_configuration.OverClocking)
+                            .SetProperty(u => u.Clearance, u => new_configuration.Clearance)
+                            .SetProperty(u => u.CurbWeight, u => new_configuration.CurbWeight)
+                            .SetProperty(u => u.FullWeight, u => new_configuration.FullWeight)
+                            .SetProperty(u => u.FuelTankVolume, u => new_configuration.FuelTankVolume)
+                            .SetProperty(u => u.NumberOfSeats, u => new_configuration.NumberOfSeats)
+                            );
+
+
+            }
+
+
+            // обновляем автомобиль
+
+            // TODO обновление автомобиля
+
+            /*
+            db.Cars.Where(p => p.Id == old.Name &&
+                p.YearOfFoundation == old.YearOfFoundation &&
+                p.Country == old.Country)
+                .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.Name, u => new_.Name)
+                            .SetProperty(u => u.YearOfFoundation, u => new_.YearOfFoundation)
+                            .SetProperty(u => u.Country, u => new_.Country));
+            
+            */
+            db.SaveChanges();
+        }
+
+        public long GetManufacturerById(ManufacturerTemplate manufacturer)
+        {
+            return db.Manufacturers.FirstOrDefault(p => p.Name == manufacturer.Name &&
+                    p.YearOfFoundation == manufacturer.YearOfFoundation &&
+                    p.Country == manufacturer.Country).Id;
+        }
+
+
+        public Configuration GetConfigByCar(CarTemplate car)
+        {
+            // получаем автомобиль по id
+            var carItem = db.Cars.FirstOrDefault(p => p.Id == car.Id);
+            if (carItem != null)
+            {
+                return db.Configurations.FirstOrDefault(p => p.Id == carItem.ConfigurationId);
+            }
+            else return null;
+
+        }
+
+        public Manufacturer GetManufacturerByCar(CarTemplate car)
+        {
+            // получаем автомобиль по id
+            var carItem = db.Cars.FirstOrDefault(p => p.Id == car.Id);
+            if (carItem != null)
+            {
+                return db.Manufacturers.FirstOrDefault(p => p.Id == carItem.ManufacturerId);
+            }
+            else return null;
+
+        }
+
+
+        public Engine GetEngineByConfig(Configuration config)
+        {
+            // получаем конфиг по id
+            var confItem = db.Configurations.FirstOrDefault(p => p.Id == config.Id);
+            if (confItem != null)
+            {
+                return db.Engines.FirstOrDefault(p => p.Id == config.EngineId);
+            }
+            else return null;
+        }
+        public Transmission GetTransmissionByConfig(Configuration config)
+        {
+            // получаем конфиг по id
+            var confItem = db.Configurations.FirstOrDefault(p => p.Id == config.Id);
+            if (confItem != null)
+            {
+                return db.Transmissions.FirstOrDefault(p => p.Id == config.TransmissionId);
+            }
+            else return null;
+        }
+
+        public SuspensionAndBrake GetSuspensionByConfig(Configuration config)
+        {
+            // получаем конфиг по id
+            var confItem = db.Configurations.FirstOrDefault(p => p.Id == config.Id);
+            if (confItem != null)
+            {
+                return db.SuspensionAndBrakes.FirstOrDefault(p => p.Id == config.SuspensionAndBrakesId);
+            }
+            else return null;
+        }
+
 
         public List<CarTemplate> GetAllCars()
         {
