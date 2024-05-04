@@ -50,29 +50,95 @@ namespace AutoCatalog
         }
         public void AddTransmission(Transmission transmission)
         {
-            transmission.Id = db.Transmissions.Count();
-            db.Transmissions.Add(transmission);
+            if (transmission.Id != null) 
+            {
+                // обновляем трансмиссию
+                db.Transmissions.Where(p => p.Id == transmission.Id)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.Type, u => transmission.Type)
+                            .SetProperty(u => u.NumberOfGears, u => transmission.NumberOfGears)
+                            );
+            }
+            else
+            {
+                transmission.Id = db.Transmissions.Count();
+                db.Transmissions.Add(transmission);
+            }
+            
             db.SaveChanges();
         }
         public void AddSuspensionAndBrakes(SuspensionAndBrake suspension)
         {
-            suspension.Id = db.SuspensionAndBrakes.Count();
-            db.SuspensionAndBrakes.Add(suspension);
+            if (suspension.Id != null)
+            {
+                // обновляем подвеску
+                db.SuspensionAndBrakes.Where(p => p.Id == suspension.Id)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.TypeOfFrontSuspension, u => suspension.TypeOfFrontSuspension)
+                            .SetProperty(u => u.TypeOfBackSuspension, u => suspension.TypeOfBackSuspension)
+                            .SetProperty(u => u.FrontBrakes, u => suspension.FrontBrakes)
+                            .SetProperty(u => u.BackBrakes, u => suspension.BackBrakes)
+                            );
+            }
+            else
+            {
+                suspension.Id = db.SuspensionAndBrakes.Count();
+                db.SuspensionAndBrakes.Add(suspension);
+            }
+            
             db.SaveChanges();
         }
 
         public void AddConfiguration(Configuration config)
         {
-            config.Id = db.Configurations.Count();
-            db.Configurations.Add(config);
+            if (config.Id != null) 
+            {
+                db.Configurations.Where(p => p.Id == config.Id)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.Name, u => config.Name)
+                            .SetProperty(u => u.TypeOfDrive, u => config.TypeOfDrive)
+                            .SetProperty(u => u.OverClocking, u => config.OverClocking)
+                            .SetProperty(u => u.Clearance, u => config.Clearance)
+                            .SetProperty(u => u.CurbWeight, u => config.CurbWeight)
+                            .SetProperty(u => u.FullWeight, u => config.FullWeight)
+                            .SetProperty(u => u.FuelTankVolume, u => config.FuelTankVolume)
+                            .SetProperty(u => u.NumberOfSeats, u => config.NumberOfSeats)
+                            );
+            }
+            else 
+            {
+                config.Id = db.Configurations.Count();
+                db.Configurations.Add(config);
+            }
+            
             db.SaveChanges();
         }
 
 
         public void AddEngine(Engine engine)
         {
-            engine.Id = db.Engines.Count();
-            db.Engines.Add(engine);
+            if (engine.Id != null)
+            {
+                // обновляем двигатель
+                db.Engines.Where(p => p.Id == engine.Id)
+                    .ExecuteUpdate(s =>
+                            s.SetProperty(u => u.CylinderArrangement, u => engine.CylinderArrangement)
+                            .SetProperty(u => u.TypeOfEngine, u => engine.TypeOfEngine)
+                            .SetProperty(u => u.Power, u => engine.Power)
+                            .SetProperty(u => u.Volume, u => engine.Volume)
+                            .SetProperty(u => u.MaxTorque, u => engine.MaxTorque)
+                            .SetProperty(u => u.NumberOfCylinders, u => engine.NumberOfCylinders)
+                            .SetProperty(u => u.TypeOfBoost, u => engine.TypeOfBoost)
+                            .SetProperty(u => u.FuelGrade, u => engine.FuelGrade)
+                            .SetProperty(u => u.EnginePowerSupplySystem, u => engine.EnginePowerSupplySystem)
+                            );
+            }
+            else
+            {
+                engine.Id = db.Engines.Count();
+                db.Engines.Add(engine);
+            }
+            
             db.SaveChanges();
         }
 
@@ -100,11 +166,27 @@ namespace AutoCatalog
             db.SaveChanges();
         }
 
+
+        private long? GetCarId(Car car)
+        {
+            // получаем автомобиль по полям из списка
+            long? id = db.Cars.FirstOrDefault(p =>
+                    p.Name == car.Name &&
+                    p.Generation == car.Generation &&
+                    p.Year == car.Year &&
+                    p.ConfigurationId == car.ConfigurationId &&
+                    p.Body == car.Body &&
+                    p.Category == car.Category).Id;
+
+            return id;
+        }
+
+
+
         public void DeleteCar(CarTemplate car)
         {
-
             // список всех автомобилей
-            List <CarTemplate> cars = this.GetAllCars();
+            List<CarTemplate> cars = this.GetAllCars();
 
             // получаем автомобиль по полям из списка
             long? id = cars.FirstOrDefault(p =>
@@ -141,6 +223,7 @@ namespace AutoCatalog
                     p.FuelTankVolume == car.FuelTankVolume &&
                     p.NumberOfSeats == car.NumberOfSeats).Id;
 
+
             var item = db.Cars.FirstOrDefault(p => p.Id == id);
 
             if (item != null) {
@@ -164,8 +247,9 @@ namespace AutoCatalog
             db.SaveChanges();
         }
 
-        public void UpdateCar(CarTemplate old, Car new_, Engine new_engine, Transmission new_transmission, SuspensionAndBrake new_suspension, Configuration new_configuration)
+        public void UpdateCar(Car new_, Engine new_engine, Transmission new_transmission, SuspensionAndBrake new_suspension, Configuration new_configuration)
         {
+            /*
             Configuration confItem = new_configuration;
 
             if (confItem != null)
@@ -214,22 +298,23 @@ namespace AutoCatalog
 
 
             }
-
+            */
 
             // обновляем автомобиль
 
-            // TODO обновление автомобиля
-
-            /*
-            db.Cars.Where(p => p.Id == old.Name &&
-                p.YearOfFoundation == old.YearOfFoundation &&
-                p.Country == old.Country)
+            db.Cars.Where(p => p.Id == this.GetCarId(new_))
                 .ExecuteUpdate(s =>
                             s.SetProperty(u => u.Name, u => new_.Name)
-                            .SetProperty(u => u.YearOfFoundation, u => new_.YearOfFoundation)
-                            .SetProperty(u => u.Country, u => new_.Country));
+                            .SetProperty(u => u.ManufacturerId, u => new_.ManufacturerId)
+                            .SetProperty(u => u.Generation, u => new_.Generation)
+                            .SetProperty(u => u.Year, u => new_.Year)
+                            .SetProperty(u => u.Body, u => new_.Body)
+                            .SetProperty(u => u.Category, u => new_.Category)
+                            );
             
-            */
+            
+
+
             db.SaveChanges();
         }
 

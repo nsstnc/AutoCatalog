@@ -5,7 +5,7 @@ namespace AutoCatalog;
 
 public partial class SuspensionAndBrake
 {
-    public long Id { get; set; }
+    public long? Id { get; set; }
 
     public string? TypeOfFrontSuspension { get; set; }
 

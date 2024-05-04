@@ -5,7 +5,7 @@ namespace AutoCatalog;
 
 public partial class Engine
 {
-    public long Id { get; set; }
+    public long? Id { get; set; }
 
     public string? CylinderArrangement { get; set; }
 

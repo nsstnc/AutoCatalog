@@ -28,18 +28,13 @@ namespace AutoCatalog
         // флаг открытого каталога
         bool openedCatalog = false;
 
-        /*
-        // инициализируем список производителей
-        Manufactures manufactures = new Manufactures();
-        // инициализируем каталог
-        Catalog catalog = new Catalog();
-        */
+        
         DataService dbdata = new DataService(new CatalogAppContext());
         // переменная для текущей подвески
         SuspensionAndBrake? currentSuspensionAndBrakes;
-        
+        Manufacturer? currentManufacturer;
         // переменная для текущей комплектации
-        Configuration? currentConfiguration;
+        Configuration ? currentConfiguration;
         
         // переменная для текущего двигателя
         Engine? currentEngine;
@@ -58,14 +53,7 @@ namespace AutoCatalog
         public MainWindow()
         {
             InitializeComponent();
-            /*
-            // считываем  json строку из файла и десериализируем ее в контейнер
-            string json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", Encoding.Default);
-            catalog = JsonConvert.DeserializeObject<Catalog>(json);
-            // то же самое для производителей
-            json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", Encoding.Default);
-            manufactures = JsonConvert.DeserializeObject<Manufactures>(json);
-            */
+            
 
 
             fillComboBoxes();
@@ -218,11 +206,7 @@ namespace AutoCatalog
                 var value = property.GetValue(obj, null);
                 // если значение свойства строка или число, добавляем его в инфо
                 if ((value is string) || (value is int) || (value is double)) info += value + ", ";
-                // если значение свойства объект другого класса, то перебираем его свойства и добавляем в описание
-                //else
-                //{
-                //    info += createInfo(value);
-               // }
+                
             }
 
            
@@ -357,6 +341,7 @@ namespace AutoCatalog
             currentEngine = null;
             currentTransmission = null;
             currentSuspensionAndBrakes = null;
+            currentManufacturer = null;
 
             openedCatalog = true;
         }
@@ -522,6 +507,7 @@ namespace AutoCatalog
             
 
             currentConfiguration = new Configuration(){
+                Id = currentConfiguration?.Id,
                 Name = nameConfigTextBox.Text,
                 Engine = currentEngine,
                 TransmissionId = currentTransmission.Id,
@@ -760,22 +746,7 @@ namespace AutoCatalog
         // действие при закрытии приложения
         private void Window_Close(object sender, CancelEventArgs e)
         {
-            /*
-            // очищаем файлы
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", string.Empty);
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", string.Empty);
-            
-            // используя поток записываем в json файл сериализованный объект контейнера
-            using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\catalog.json", false))
-            {
-                w.Write(JsonConvert.SerializeObject(catalog));
-            }
-            // то же самое для производителей
-            using (StreamWriter w = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\manufactures.json", false))
-            {
-                w.Write(JsonConvert.SerializeObject(manufactures));
-            }
-            */
+          
         }
         
 
@@ -809,7 +780,7 @@ namespace AutoCatalog
             CarTemplate current = (CarTemplate)catalogList.Items[selected];
 
             currentConfiguration = dbdata.GetConfigByCar(current);
-            Manufacturer currentManufacturer = dbdata.GetManufacturerByCar(current);
+            currentManufacturer = dbdata.GetManufacturerByCar(current);
             currentEngine = dbdata.GetEngineByConfig(currentConfiguration);
             currentSuspensionAndBrakes = dbdata.GetSuspensionByConfig(currentConfiguration);
             currentTransmission = dbdata.GetTransmissionByConfig(currentConfiguration);
@@ -853,7 +824,10 @@ namespace AutoCatalog
 
 
             currentConfiguration = dbdata.GetConfigByCar(current);
-            Manufacturer currentManufacturer = dbdata.GetManufacturerByCar(current);
+            currentManufacturer = dbdata.GetManufacturerByCar(current);
+
+            log.Text = currentManufacturer.Name;
+
             currentEngine = dbdata.GetEngineByConfig(currentConfiguration);
             currentSuspensionAndBrakes = dbdata.GetSuspensionByConfig(currentConfiguration);
             currentTransmission = dbdata.GetTransmissionByConfig(currentConfiguration);
@@ -887,9 +861,7 @@ namespace AutoCatalog
             // сохраняем индекс текущего выбранного элемента
             int selected = catalogList.SelectedIndex;
 
-            // старый экземпляр автомобиля
-            CarTemplate old_car = (CarTemplate)catalogList.Items[selected];
-
+            
 
             // создаем новый экземпляр класса с новыми заполненными данными
             Car car = new Car()
@@ -903,8 +875,14 @@ namespace AutoCatalog
                 Category = categoryTextBox.Text
              };
 
+            
+
+
+
+
+
             // заменяем элемент
-            // dbdata.UpdateCar(old_car, car);
+            dbdata.UpdateCar(car, currentEngine, currentTransmission, currentSuspensionAndBrakes, currentConfiguration);
             // обновляем каталог
             updateCatalog();
 

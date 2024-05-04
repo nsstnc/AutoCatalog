@@ -5,7 +5,7 @@ namespace AutoCatalog;
 
 public partial class Transmission
 {
-    public long Id { get; set; }
+    public long? Id { get; set; }
 
     public string? Type { get; set; }
 
